@@ -1,24 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="d1K-1u-kE9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="YvC-mS-tby">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="Poppins-Regular.ttf">
-            <string>Poppins-Regular</string>
-            <string>Poppins-Regular</string>
-            <string>Poppins-Regular</string>
-            <string>Poppins-Regular</string>
-            <string>Poppins-Regular</string>
+        <mutableArray key="Poppins-Light.ttf">
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
+            <string>Poppins-Light</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--LoginHome-->
         <scene sceneID="KZu-0T-yHz">
             <objects>
-                <viewController id="d1K-1u-kE9" sceneMemberID="viewController">
+                <viewController title="LoginHome" id="d1K-1u-kE9" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hDX-Vm-AUe"/>
                         <viewControllerLayoutGuide type="bottom" id="IuG-52-DA6"/>
@@ -34,7 +38,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="u1R-K4-e85" userLabel="height"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up with email" image="Email"/>
                             </button>
@@ -45,7 +49,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tei-9K-SgQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up using Google" image="Google+"/>
                             </button>
@@ -56,18 +60,18 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Az0-Xr-F6w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up using Facebook" image="Facebook"/>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="do more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-31-JdK">
-                                <rect key="frame" x="155" y="225" width="64" height="25"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="do more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-31-JdK">
+                                <rect key="frame" x="156" y="225" width="63" height="25"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="aZx-Go-gZt"/>
                                     <constraint firstAttribute="width" constant="70" id="gof-pl-zRX"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
@@ -77,15 +81,18 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiC-RB-Avt">
-                                <rect key="frame" x="306" y="28" width="59" height="42"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eiC-RB-Avt">
+                                <rect key="frame" x="308" y="28" width="57" height="42"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="18"/>
                                 <state key="normal" title="sign in">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="iTy-DW-AkP" kind="show" id="6Oj-HU-sZz"/>
+                                </connections>
                             </button>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="unx-R5-LLo">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="unx-R5-LLo">
                                 <rect key="frame" x="144" y="165" width="86" height="41"/>
                                 <animations/>
                             </imageView>
@@ -142,12 +149,145 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="Ev4-q8-aBk"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jc5-xA-zey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="374.5" y="390.5"/>
+            <point key="canvasLocation" x="1186.5" y="390.5"/>
+        </scene>
+        <!--LoginLogin-->
+        <scene sceneID="qXe-hB-ltH">
+            <objects>
+                <viewController title="LoginLogin" id="iTy-DW-AkP" customClass="LoginLoginController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ENb-37-WLV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ot0-aW-XYf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5Mc-ic-zWe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mlw-NG-fQD">
+                                <rect key="frame" x="144" y="75" width="86" height="41"/>
+                                <animations/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="sign in" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xc8-lL-B4c">
+                                <rect key="frame" x="164" y="141" width="48" height="25"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="EI5-K3-e2e"/>
+                                    <constraint firstAttribute="width" constant="70" id="U2L-Mo-MxP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="EI5-K3-e2e"/>
+                                        <exclude reference="U2L-Mo-MxP"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Email, Username or Phonenumber" textAlignment="natural" minimumFontSize="17" background="Underline" translatesAutoresizingMaskIntoConstraints="NO" id="crR-yO-0cO">
+                                <rect key="frame" x="37" y="220" width="300" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="51E-ZH-mpx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="Underline" translatesAutoresizingMaskIntoConstraints="NO" id="O4S-WG-agu">
+                                <rect key="frame" x="37" y="264" width="300" height="44"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="CzD-0Z-z4i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k72-Ee-jS0">
+                                <rect key="frame" x="237" y="323" width="100" height="31"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="11"/>
+                                <state key="normal" title="Get help signing in">
+                                    <color key="titleColor" red="0.16862745098039217" green="0.78823529411764703" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="guJ-Az-qPy" userLabel="Next">
+                                <rect key="frame" x="308" y="368" width="29" height="26"/>
+                                <animations/>
+                                <state key="normal" image="Next"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UV-ZD-mqF" userLabel="Back">
+                                <rect key="frame" x="37" y="368" width="29" height="26"/>
+                                <animations/>
+                                <state key="normal" image="Previous"/>
+                                <connections>
+                                    <action selector="backClicked:" destination="iTy-DW-AkP" eventType="touchUpInside" id="vJn-AZ-kif"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="k72-Ee-jS0" firstAttribute="top" secondItem="O4S-WG-agu" secondAttribute="bottom" constant="15" id="1fe-qi-Tqa"/>
+                            <constraint firstItem="Mlw-NG-fQD" firstAttribute="top" secondItem="ENb-37-WLV" secondAttribute="bottom" constant="55" id="4ao-GI-f50"/>
+                            <constraint firstItem="O4S-WG-agu" firstAttribute="trailing" secondItem="crR-yO-0cO" secondAttribute="trailing" id="5PP-wz-fYA"/>
+                            <constraint firstItem="1UV-ZD-mqF" firstAttribute="top" secondItem="O4S-WG-agu" secondAttribute="bottom" constant="60" id="B4K-qh-5xk"/>
+                            <constraint firstItem="1UV-ZD-mqF" firstAttribute="leading" secondItem="O4S-WG-agu" secondAttribute="leading" id="H8v-e0-GGD"/>
+                            <constraint firstItem="xc8-lL-B4c" firstAttribute="centerX" secondItem="5Mc-ic-zWe" secondAttribute="centerX" id="LZE-3J-S4t"/>
+                            <constraint firstItem="O4S-WG-agu" firstAttribute="centerY" secondItem="5Mc-ic-zWe" secondAttribute="centerY" id="MLd-VC-oRQ"/>
+                            <constraint firstItem="O4S-WG-agu" firstAttribute="top" secondItem="crR-yO-0cO" secondAttribute="bottom" id="Pdr-i0-LjS"/>
+                            <constraint firstItem="guJ-Az-qPy" firstAttribute="top" secondItem="O4S-WG-agu" secondAttribute="bottom" constant="60" id="Te6-DX-D4y"/>
+                            <constraint firstItem="Mlw-NG-fQD" firstAttribute="centerX" secondItem="5Mc-ic-zWe" secondAttribute="centerX" id="Twr-8j-dpI"/>
+                            <constraint firstItem="O4S-WG-agu" firstAttribute="leading" secondItem="crR-yO-0cO" secondAttribute="leading" id="X1e-oG-aHY"/>
+                            <constraint firstAttribute="trailing" secondItem="crR-yO-0cO" secondAttribute="trailing" constant="38" id="Y5s-r7-PLQ"/>
+                            <constraint firstItem="guJ-Az-qPy" firstAttribute="trailing" secondItem="O4S-WG-agu" secondAttribute="trailing" id="o6g-G3-Hfo"/>
+                            <constraint firstItem="crR-yO-0cO" firstAttribute="leading" secondItem="5Mc-ic-zWe" secondAttribute="leading" constant="37" id="uZE-Zx-hhK"/>
+                            <constraint firstItem="k72-Ee-jS0" firstAttribute="trailing" secondItem="O4S-WG-agu" secondAttribute="trailing" id="zAB-nb-ahP"/>
+                            <constraint firstItem="crR-yO-0cO" firstAttribute="top" secondItem="ENb-37-WLV" secondAttribute="bottom" constant="200" id="zF9-6k-UiR"/>
+                            <constraint firstItem="xc8-lL-B4c" firstAttribute="top" secondItem="Mlw-NG-fQD" secondAttribute="bottom" constant="25" id="zJj-eh-FM5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="MLd-VC-oRQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="back" destination="1UV-ZD-mqF" id="tDh-OZ-4ij"/>
+                        <outlet property="emailField" destination="crR-yO-0cO" id="faD-E9-Bse"/>
+                        <outlet property="next" destination="guJ-Az-qPy" id="2ES-0q-eF3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tok-E9-b69" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1671.5" y="390.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wGu-iA-0DG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="YvC-mS-tby" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xv2-AL-w7g">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="d1K-1u-kE9" kind="relationship" relationship="rootViewController" id="now-w3-yYS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WbQ-IL-GxN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="374" y="390"/>
         </scene>
     </scenes>
     <resources>
@@ -155,5 +295,8 @@
         <image name="Email" width="23" height="15"/>
         <image name="Facebook" width="20" height="20"/>
         <image name="Google+" width="19" height="20"/>
+        <image name="Next" width="29" height="26"/>
+        <image name="Previous" width="29" height="26"/>
+        <image name="Underline" width="601" height="89"/>
     </resources>
 </document>
