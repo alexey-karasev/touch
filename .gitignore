@@ -1,0 +1,5 @@
+design
+Pods
+touch.xcodeproj/*
+!touch.xcodeproj/*.pbxproj
+touch.xcworkspace
