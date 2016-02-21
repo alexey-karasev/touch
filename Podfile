@@ -4,13 +4,14 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'touch' do
-
-pod "MagicalRecord"
-
+    pod 'MagicalRecord'
+    pod 'Lockbox'
+    pod 'JWTDecode', '~> 1.0'
 end
 
 target 'touchTests' do
-
+    pod 'Quick', '~> 0.9.0'
+    pod 'Nimble', '3.0.0'
 end
 
 target 'touchUITests' do

@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		558EE07027D546AEB0CD9801 /* Pods_touchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7BC29BDF355DA6F1B1C193 /* Pods_touchTests.framework */; };
 		C9581C3637ADF3340E8C4157 /* Pods_touch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006886736E550A643F2E830C /* Pods_touch.framework */; };
 		FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */; };
 		FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */; };
 		FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68551C75AA8100C415B0 /* Assets.xcassets */; };
 		FA9D68591C75AA8100C415B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68571C75AA8100C415B0 /* LaunchScreen.storyboard */; };
-		FA9D68641C75AA8100C415B0 /* touchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D68631C75AA8100C415B0 /* touchTests.swift */; };
-		FA9D686F1C75AA8100C415B0 /* touchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D686E1C75AA8100C415B0 /* touchUITests.swift */; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
 		FAC247DA1C761AD100666E5C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC247D91C761AD100666E5C /* Login.storyboard */; settings = {ASSET_TAGS = (); }; };
 		FAC247E11C76255D00666E5C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DC1C76255D00666E5C /* Poppins-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -22,6 +21,9 @@
 		FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E41C76255D00666E5C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E51C76255D00666E5C /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */; settings = {ASSET_TAGS = (); }; };
+		FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
+		FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
+		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +46,10 @@
 /* Begin PBXFileReference section */
 		006886736E550A643F2E830C /* Pods_touch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		150DAE23696790EC0CF90F8A /* Pods-touch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-touch/Pods-touch.debug.xcconfig"; sourceTree = "<group>"; };
+		7CFE1BAF65024DBD2D629132 /* Pods-touchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-touchTests/Pods-touchTests.release.xcconfig"; sourceTree = "<group>"; };
+		95E3D31E9C3386D17E06475B /* Pods-touchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-touchTests/Pods-touchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2CDC3835861066F942CE484 /* Pods-touch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touch.release.xcconfig"; path = "Pods/Target Support Files/Pods-touch/Pods-touch.release.xcconfig"; sourceTree = "<group>"; };
+		BE7BC29BDF355DA6F1B1C193 /* Pods_touchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginLoginController.swift; path = controllers/login/LoginLoginController.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -53,10 +58,8 @@
 		FA9D68581C75AA8100C415B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9D685A1C75AA8100C415B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9D685F1C75AA8100C415B0 /* touchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA9D68631C75AA8100C415B0 /* touchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchTests.swift; sourceTree = "<group>"; };
 		FA9D68651C75AA8100C415B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9D686A1C75AA8100C415B0 /* touchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA9D686E1C75AA8100C415B0 /* touchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = touchUITests.swift; sourceTree = "<group>"; };
 		FA9D68701C75AA8100C415B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA0753D1C75B8CF004BA66C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		FAC247D91C761AD100666E5C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -65,6 +68,8 @@
 		FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = models/AppUser.swift; sourceTree = "<group>"; };
+		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				558EE07027D546AEB0CD9801 /* Pods_touchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +104,8 @@
 			children = (
 				150DAE23696790EC0CF90F8A /* Pods-touch.debug.xcconfig */,
 				B2CDC3835861066F942CE484 /* Pods-touch.release.xcconfig */,
+				95E3D31E9C3386D17E06475B /* Pods-touchTests.debug.xcconfig */,
+				7CFE1BAF65024DBD2D629132 /* Pods-touchTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -106,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				006886736E550A643F2E830C /* Pods_touch.framework */,
+				BE7BC29BDF355DA6F1B1C193 /* Pods_touchTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -148,7 +157,7 @@
 		FA9D68621C75AA8100C415B0 /* touchTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA9D68631C75AA8100C415B0 /* touchTests.swift */,
+				FAFE898D1C7A5AB500B3F1AC /* model */,
 				FA9D68651C75AA8100C415B0 /* Info.plist */,
 			);
 			path = touchTests;
@@ -157,7 +166,6 @@
 		FA9D686D1C75AA8100C415B0 /* touchUITests */ = {
 			isa = PBXGroup;
 			children = (
-				FA9D686E1C75AA8100C415B0 /* touchUITests.swift */,
 				FA9D68701C75AA8100C415B0 /* Info.plist */,
 			);
 			path = touchUITests;
@@ -166,6 +174,7 @@
 		FAC247D21C76191A00666E5C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */,
 				FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */,
 			);
 			name = model;
@@ -210,6 +219,14 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		FAFE898D1C7A5AB500B3F1AC /* model */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -237,9 +254,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FA9D68761C75AA8100C415B0 /* Build configuration list for PBXNativeTarget "touchTests" */;
 			buildPhases = (
+				CAFBC70BA4A91190FD58365A /* Check Pods Manifest.lock */,
 				FA9D685B1C75AA8100C415B0 /* Sources */,
 				FA9D685C1C75AA8100C415B0 /* Frameworks */,
 				FA9D685D1C75AA8100C415B0 /* Resources */,
+				6861683A02692858AB4A1535 /* Embed Pods Frameworks */,
+				D514E18A17CB419E26BB9D6E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -275,6 +295,7 @@
 		FA9D68401C75AA8100C415B0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Алексей Карасев";
 				TargetAttributes = {
@@ -360,6 +381,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-touch/Pods-touch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6861683A02692858AB4A1535 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-touchTests/Pods-touchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AB08C3148B64A46BA52C2E85 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -390,6 +426,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		CAFBC70BA4A91190FD58365A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D514E18A17CB419E26BB9D6E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-touchTests/Pods-touchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -397,6 +463,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */,
 				FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */,
 				FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */,
 				FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */,
@@ -407,7 +474,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9D68641C75AA8100C415B0 /* touchTests.swift in Sources */,
+				FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */,
+				FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +483,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA9D686F1C75AA8100C415B0 /* touchUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,20 +622,25 @@
 		};
 		FA9D68771C75AA8100C415B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95E3D31E9C3386D17E06475B /* Pods-touchTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = touchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/touch.app/touch";
 			};
 			name = Debug;
 		};
 		FA9D68781C75AA8100C415B0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CFE1BAF65024DBD2D629132 /* Pods-touchTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = touchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touchTests;
