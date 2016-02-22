@@ -9,16 +9,25 @@
 import JWTDecode
 import Lockbox
 
-class AppUser: NSObject {
+enum AppUserError: ErrorType {
+    case InvalidToken
+    case MissingFieldsInToken
+    case MissingToken
+}
+
+class AppUser {
+    static var shared = try? AppUser()
+    static func update(token:String) throws {
+        shared = try AppUser(token: token)
+    }
     static let lockboxKey="user:token"
-    
     let token:String
-    let email:String?
-    let login:String?
-    let phone:String?
-    let name:String?
+    let email:String
+    let login:String
+    let phone:String
+    let name:String
     
-    init(token:String, email:String?, login:String?, phone:String?, name:String?) {
+    init(token:String, email:String, login:String, phone:String, name:String) {
         self.token = token
         self.email = email
         self.login = login
@@ -26,20 +35,24 @@ class AppUser: NSObject {
         self.name = name
     }
     
-    convenience override init() {
-        var token = Lockbox.unarchiveObjectForKey(AppUser.lockboxKey) as? String
-        if token == nil {token = ""}
-        self.init(token:token!)
+    convenience init() throws {
+        let token = Lockbox.unarchiveObjectForKey(AppUser.lockboxKey) as? String
+        if token == nil {throw AppUserError.MissingToken}
+        try self.init(token:token!)
     }
     
-    convenience init(token:String){
+    convenience init(token:String) throws {
         let jwt = try? decode(token)
         if jwt == nil {
-            self.init(token:token, email:nil, login:nil, phone:nil, name:nil)
+            throw AppUserError.InvalidToken
         } else {
             let body = jwt!.body
-            self.init(token:token, email:body["email"] as? String, login:body["login"] as? String,
-                phone:body["phone"] as? String, name:body["name"] as? String)
+            if (body["email"] == nil) || (body["login"] == nil)
+                || (body["phone"] == nil) || (body["name"] == nil) || (body["exp"] == nil) {
+                    throw AppUserError.MissingFieldsInToken
+            }
+            self.init(token:token, email:body["email"] as! String, login:body["login"] as! String,
+                phone:body["phone"] as! String, name:body["name"] as! String)
         }
         Lockbox.archiveObject(self.token, forKey: AppUser.lockboxKey)
     }

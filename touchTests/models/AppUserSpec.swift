@@ -19,7 +19,7 @@ class AppUserSpec: QuickSpec {
             context("valid token") {
                 it("initializes app user") {
                     let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmNhMGUxNjE2NjNkYzRiMWIxMzRmZTIiLCJlbWFpbCI6Im55YXNoYUBnbWFpbC5jb20iLCJsb2dpbiI6Im55YXNoYSIsInBob25lIjoiKzcxIiwibmFtZSI6ImxhbXBvdmF5YSBueWFzaGEiLCJleHAiOjE0NTg3NjA4NTQsImlhdCI6MTQ1NjA4MjQ1NH0.Z9nT0bL4NfCm6sXWB8XTZe0FaSqljMDegFGwVmsEIOA"
-                    let appUser = AppUser(token: token)
+                    let appUser = try! AppUser(token: token)
                     expect(appUser.email).to(equal("nyasha@gmail.com"))
                     expect(appUser.name).to(equal("lampovaya nyasha"))
                     expect(appUser.login).to(equal("nyasha"))
@@ -27,13 +27,11 @@ class AppUserSpec: QuickSpec {
                 }
             }
             context("invalid token") {
-                it("initializes app user with nil parameters") {
+                it("throws an exception") {
                     let token = "123"
-                    let appUser = AppUser(token: token)
-                    expect(appUser.email).to(beNil())
-                    expect(appUser.name).to(beNil())
-                    expect(appUser.login).to(beNil())
-                    expect(appUser.phone).to(beNil())
+                    let appUser = try? AppUser(token: token)
+                    expect(appUser).to(beNil())
+                    
                 }
             }
         }
@@ -41,8 +39,8 @@ class AppUserSpec: QuickSpec {
         describe("init()") {
             it("loads AppUser token from lockbox") {
                 let token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfaWQiOiI1NmNhMGUxNjE2NjNkYzRiMWIxMzRmZTIiLCJlbWFpbCI6Im55YXNoYUBnbWFpbC5jb20iLCJsb2dpbiI6Im55YXNoYSIsInBob25lIjoiKzcxIiwibmFtZSI6ImxhbXBvdmF5YSBueWFzaGEiLCJleHAiOjE0NTg3NjA4NTQsImlhdCI6MTQ1NjA4MjQ1NH0.Z9nT0bL4NfCm6sXWB8XTZe0FaSqljMDegFGwVmsEIOA"
-                var appUser = AppUser(token: token) //adding token to Lockbox
-                appUser = AppUser()
+                var appUser = try! AppUser(token: token) //adding token to Lockbox
+                appUser = try! AppUser()
                 expect(appUser.email).to(equal("nyasha@gmail.com"))
                 expect(appUser.name).to(equal("lampovaya nyasha"))
                 expect(appUser.login).to(equal("nyasha"))

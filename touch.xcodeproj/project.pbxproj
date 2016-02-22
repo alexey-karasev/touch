@@ -24,6 +24,8 @@
 		FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
+		FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE89921C7B15F700B3F1AC /* Api.swift */; settings = {ASSET_TAGS = (); }; };
+		FAFE89951C7B198C00B3F1AC /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFE89941C7B198C00B3F1AC /* Config.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
 		FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = models/AppUser.swift; sourceTree = "<group>"; };
 		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
+		FAFE89921C7B15F700B3F1AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = web/Api.swift; sourceTree = "<group>"; };
+		FAFE89941C7B198C00B3F1AC /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 		FA9D684A1C75AA8100C415B0 /* touch */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE89901C7B15B300B3F1AC /* web */,
 				FAC247D51C76193000666E5C /* app */,
 				FAC247D41C76192700666E5C /* controller */,
 				FAC247D31C76192000666E5C /* view */,
@@ -174,8 +179,8 @@
 		FAC247D21C76191A00666E5C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE89911C7B15C100B3F1AC /* Core Date */,
 				FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */,
-				FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			children = (
 				FA9D685A1C75AA8100C415B0 /* Info.plist */,
 				FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */,
+				FAFE89941C7B198C00B3F1AC /* Config.plist */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -225,6 +231,22 @@
 				FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		FAFE89901C7B15B300B3F1AC /* web */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE89921C7B15F700B3F1AC /* Api.swift */,
+			);
+			name = web;
+			sourceTree = "<group>";
+		};
+		FAFE89911C7B15C100B3F1AC /* Core Date */ = {
+			isa = PBXGroup;
+			children = (
+				FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */,
+			);
+			name = "Core Date";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,6 +367,7 @@
 				FA9D68591C75AA8100C415B0 /* LaunchScreen.storyboard in Resources */,
 				FAC247E51C76255D00666E5C /* Poppins-SemiBold.ttf in Resources */,
 				FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */,
+				FAFE89951C7B198C00B3F1AC /* Config.plist in Resources */,
 				FAC247E41C76255D00666E5C /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -463,6 +486,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */,
 				FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */,
 				FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */,
 				FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */,
@@ -604,6 +628,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEB_API_URL = "http://localhost:3000";
 			};
 			name = Debug;
 		};
@@ -617,6 +642,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WEB_API_URL = TBA;
 			};
 			name = Release;
 		};
