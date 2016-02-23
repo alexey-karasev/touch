@@ -9,13 +9,16 @@
 /* Begin PBXBuildFile section */
 		558EE07027D546AEB0CD9801 /* Pods_touchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7BC29BDF355DA6F1B1C193 /* Pods_touchTests.framework */; };
 		C9581C3637ADF3340E8C4157 /* Pods_touch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 006886736E550A643F2E830C /* Pods_touch.framework */; };
+		FA0847761C7C2B010058FB57 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0847781C7C2B010058FB57 /* Login.storyboard */; };
+		FA08477A1C7C2B350058FB57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA08477C1C7C2B350058FB57 /* Main.storyboard */; };
+		FA0847821C7C2D6A0058FB57 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0847841C7C2D6A0058FB57 /* Localizable.strings */; };
+		FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0847881C7C62CE0058FB57 /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
 		FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */; };
 		FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */; };
 		FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68551C75AA8100C415B0 /* Assets.xcassets */; };
 		FA9D68591C75AA8100C415B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68571C75AA8100C415B0 /* LaunchScreen.storyboard */; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
-		FAC247DA1C761AD100666E5C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC247D91C761AD100666E5C /* Login.storyboard */; settings = {ASSET_TAGS = (); }; };
 		FAC247E11C76255D00666E5C /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DC1C76255D00666E5C /* Poppins-Bold.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E21C76255D00666E5C /* Poppins-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DD1C76255D00666E5C /* Poppins-Light.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
@@ -25,7 +28,6 @@
 		FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE89921C7B15F700B3F1AC /* Api.swift */; settings = {ASSET_TAGS = (); }; };
-		FAFE89951C7B198C00B3F1AC /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAFE89941C7B198C00B3F1AC /* Config.plist */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,14 @@
 		95E3D31E9C3386D17E06475B /* Pods-touchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-touchTests/Pods-touchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B2CDC3835861066F942CE484 /* Pods-touch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-touch.release.xcconfig"; path = "Pods/Target Support Files/Pods-touch/Pods-touch.release.xcconfig"; sourceTree = "<group>"; };
 		BE7BC29BDF355DA6F1B1C193 /* Pods_touchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_touchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA0847751C7C29E40058FB57 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		FA0847791C7C2B110058FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		FA08477B1C7C2B350058FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FA08477E1C7C2B3C0058FB57 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		FA08477F1C7C2B4F0058FB57 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Login.strings; sourceTree = "<group>"; };
+		FA0847831C7C2D6A0058FB57 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA0847851C7C2D6E0058FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FA0847881C7C62CE0058FB57 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = utils/Utils.swift; sourceTree = "<group>"; };
 		FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginLoginController.swift; path = controllers/login/LoginLoginController.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,7 +74,6 @@
 		FA9D686A1C75AA8100C415B0 /* touchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D68701C75AA8100C415B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA0753D1C75B8CF004BA66C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		FAC247D91C761AD100666E5C /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		FAC247DC1C76255D00666E5C /* Poppins-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Bold.ttf"; sourceTree = "<group>"; };
 		FAC247DD1C76255D00666E5C /* Poppins-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Light.ttf"; sourceTree = "<group>"; };
 		FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -73,7 +82,6 @@
 		FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = models/AppUser.swift; sourceTree = "<group>"; };
 		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
 		FAFE89921C7B15F700B3F1AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = web/Api.swift; sourceTree = "<group>"; };
-		FAFE89941C7B198C00B3F1AC /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Config.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +131,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		FA0847871C7C629F0058FB57 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA0847881C7C62CE0058FB57 /* Utils.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		FA9D683F1C75AA8100C415B0 = {
 			isa = PBXGroup;
 			children = (
@@ -150,6 +166,7 @@
 		FA9D684A1C75AA8100C415B0 /* touch */ = {
 			isa = PBXGroup;
 			children = (
+				FA0847871C7C629F0058FB57 /* utils */,
 				FAFE89901C7B15B300B3F1AC /* web */,
 				FAC247D51C76193000666E5C /* app */,
 				FAC247D41C76192700666E5C /* controller */,
@@ -179,7 +196,7 @@
 		FAC247D21C76191A00666E5C /* model */ = {
 			isa = PBXGroup;
 			children = (
-				FAFE89911C7B15C100B3F1AC /* Core Date */,
+				FAFE89911C7B15C100B3F1AC /* core data */,
 				FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */,
 			);
 			name = model;
@@ -189,7 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				FA9D68571C75AA8100C415B0 /* LaunchScreen.storyboard */,
-				FAC247D91C761AD100666E5C /* Login.storyboard */,
+				FA0847781C7C2B010058FB57 /* Login.storyboard */,
+				FA08477C1C7C2B350058FB57 /* Main.storyboard */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -207,7 +225,6 @@
 			children = (
 				FA9D685A1C75AA8100C415B0 /* Info.plist */,
 				FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */,
-				FAFE89941C7B198C00B3F1AC /* Config.plist */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -215,6 +232,7 @@
 		FAC247DB1C76252B00666E5C /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA0847841C7C2D6A0058FB57 /* Localizable.strings */,
 				FAC247DC1C76255D00666E5C /* Poppins-Bold.ttf */,
 				FAC247DD1C76255D00666E5C /* Poppins-Light.ttf */,
 				FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */,
@@ -241,12 +259,12 @@
 			name = web;
 			sourceTree = "<group>";
 		};
-		FAFE89911C7B15C100B3F1AC /* Core Date */ = {
+		FAFE89911C7B15C100B3F1AC /* core data */ = {
 			isa = PBXGroup;
 			children = (
 				FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */,
 			);
-			name = "Core Date";
+			name = "core data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,6 +359,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = FA9D683F1C75AA8100C415B0;
 			productRefGroup = FA9D68491C75AA8100C415B0 /* Products */;
@@ -359,15 +378,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAC247DA1C761AD100666E5C /* Login.storyboard in Resources */,
+				FA0847761C7C2B010058FB57 /* Login.storyboard in Resources */,
+				FA0847821C7C2D6A0058FB57 /* Localizable.strings in Resources */,
 				FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */,
 				FAC247E21C76255D00666E5C /* Poppins-Light.ttf in Resources */,
 				FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */,
 				FAC247E11C76255D00666E5C /* Poppins-Bold.ttf in Resources */,
+				FA08477A1C7C2B350058FB57 /* Main.storyboard in Resources */,
 				FA9D68591C75AA8100C415B0 /* LaunchScreen.storyboard in Resources */,
 				FAC247E51C76255D00666E5C /* Poppins-SemiBold.ttf in Resources */,
 				FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */,
-				FAFE89951C7B198C00B3F1AC /* Config.plist in Resources */,
 				FAC247E41C76255D00666E5C /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -491,6 +511,7 @@
 				FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */,
 				FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */,
 				FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */,
+				FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,10 +547,39 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		FA0847781C7C2B010058FB57 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA0847791C7C2B110058FB57 /* Base */,
+				FA08477F1C7C2B4F0058FB57 /* ru */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		FA08477C1C7C2B350058FB57 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA08477B1C7C2B350058FB57 /* Base */,
+				FA08477E1C7C2B3C0058FB57 /* ru */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FA0847841C7C2D6A0058FB57 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA0847831C7C2D6A0058FB57 /* ru */,
+				FA0847851C7C2D6E0058FB57 /* Base */,
+			);
+			name = Localizable.strings;
+			path = touch/i18n;
+			sourceTree = "<group>";
+		};
 		FA9D68571C75AA8100C415B0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				FA9D68581C75AA8100C415B0 /* Base */,
+				FA0847751C7C29E40058FB57 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -576,6 +626,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -613,6 +664,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "-DRELEASE";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

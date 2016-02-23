@@ -220,6 +220,9 @@
                                 <rect key="frame" x="308" y="368" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Next"/>
+                                <connections>
+                                    <action selector="nextClicked" destination="iTy-DW-AkP" eventType="touchUpInside" id="dj4-Ym-B3g"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UV-ZD-mqF" userLabel="Back">
                                 <rect key="frame" x="37" y="368" width="29" height="26"/>
@@ -263,6 +266,7 @@
                         <outlet property="back" destination="1UV-ZD-mqF" id="tDh-OZ-4ij"/>
                         <outlet property="emailField" destination="crR-yO-0cO" id="faD-E9-Bse"/>
                         <outlet property="next" destination="guJ-Az-qPy" id="2ES-0q-eF3"/>
+                        <outlet property="passwordField" destination="O4S-WG-agu" id="xst-4Z-6R6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tok-E9-b69" userLabel="First Responder" sceneMemberID="firstResponder"/>

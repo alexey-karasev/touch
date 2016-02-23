@@ -8,29 +8,26 @@
 
 import UIKit
 
-enum WebApiError: ErrorType {
-    case InvalidResponse
-}
 
-typealias RequestCallback = (status: Int, data:[String:AnyObject]?, error:String?) -> Void
+typealias RequestCallback = (data:[String:AnyObject]?, error:NSError?) -> Void
 
 class WebApi:NSObject, NSURLSessionDelegate {
     static let shared = WebApi()
-    var session: NSURLSession?
-    var task: NSURLSessionTask?
+    var session: NSURLSession!
     
     let url:String
     
     override init() {
-
-        let path = NSBundle.mainBundle().pathForResource("Config", ofType: "plist")
-        let dict = NSDictionary(contentsOfFile: path!) as? [String: AnyObject]
-        self.url = dict!["Web API URL"] as! String
+        let config = NSBundle.mainBundle().objectForInfoDictionaryKey("Config") as? NSDictionary
+        self.url = config!["Web API URL"] as! String
         super.init()
         
         let conf = NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        #if DEBUG
+            conf.timeoutIntervalForRequest = 1.0;
+            conf.timeoutIntervalForResource = 1.0;
+        #endif
         self.session = NSURLSession(configuration: conf, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-
     }
     
     
@@ -46,7 +43,7 @@ class WebApi:NSObject, NSURLSessionDelegate {
     }
     
     func get(url url:String, callback:RequestCallback){
-        let uri = NSURL(string: url)
+        let uri = NSURL(string: self.url+url)
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.HTTPMethod = "GET"
@@ -55,7 +52,7 @@ class WebApi:NSObject, NSURLSessionDelegate {
 
     
     func post(url url:String, payload:[String:String], callback:RequestCallback){
-        let uri = NSURL(string: url)
+        let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -67,26 +64,35 @@ class WebApi:NSObject, NSURLSessionDelegate {
     }
     
     private func send(request request:NSURLRequest, callback:RequestCallback) {
-        session!.dataTaskWithRequest(request) { data, response, error in
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if (error != nil) {
+                callback(data: nil, error:error)
+                return
+            }
             let httpResp = response as? NSHTTPURLResponse
             if httpResp == nil {
-                callback(status: 500, data: nil, error: "Failed to cast URLResponse to HTTPURLRespone: \(httpResp)")
+                callback(data: nil, error: NSError(domain: NSGenericException, code: -1, userInfo: ["message":"Failed to downcast URLResponse: \(httpResp)"]))
+                return
+            }
+            if (httpResp!.statusCode == 401) {
+                callback(data: nil, error: NSError(domain: NSURLErrorDomain, code: NSURLError.UserCancelledAuthentication.rawValue, userInfo: nil))
                 return
             }
             var dict:[String:AnyObject]?
-            if data != nil {
+            if data != nil && data!.length > 0 {
                 let obj = try? NSJSONSerialization.JSONObjectWithData(data!, options: [])
                 if obj == nil {
-                    callback(status: 500, data: nil, error: "Failed to cast data from reponse to JSON: \(data!)")
+                    callback(data: nil, error: NSError(domain: NSParseErrorException, code: -1, userInfo: ["message":"Failed to cast data from reponse to JSON: \(data!)"]))
                     return
                 }
                 dict = obj! as? [String:AnyObject]
                 if dict == nil {
-                    callback(status: 500, data: nil, error: "Failed to cast data from reponse to JSON: \(dict!)")
+                    callback(data: nil, error: NSError(domain: NSParseErrorException, code: -1, userInfo: ["message":"Failed to cast data from reponse to JSON: \(data!)"]))
                     return
                 }
             }
-            callback(status: httpResp!.statusCode, data: dict!, error: nil)
+            callback(data: dict, error: nil)
         }
+        task.resume()
     }
 }

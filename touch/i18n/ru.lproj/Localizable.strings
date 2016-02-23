@@ -1,0 +1,10 @@
+"INVALID_EMAIL" = "Неверный формат email";
+"USERNAME_FIELD_REQUIRED" = "Необходимо указать имя пользователя. Пожалуйста укажите email, номер телефона, или логин";
+"ERROR" = "Ошибка";
+"OK" = "Ок";
+"PASSWORD_FIELD_REQUIRED" = "Пожалуйста, введите пароль";
+"CANNOT_NOT_CONNECT_TO_SERVER" = "Не удалось подключиться к серверу";
+"REQUEST_TO_SERVER_TIMED_OUT" = "Сервер не отвечает";
+"IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";
+"UNKNOWN_CONNECTION_ERROR" = "Неизвестная ошибка подключения";
+"INVALID_USERNAME_OR_PASSWORD" = "Неверное имя пользователя или пароль";
