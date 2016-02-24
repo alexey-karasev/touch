@@ -197,8 +197,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="ic8-Ev-EQ4"/>
                                         <exclude reference="Uzy-Gr-JgD"/>
+                                        <exclude reference="ic8-Ev-EQ4"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -353,7 +353,7 @@
         <!--Login-->
         <scene sceneID="qXe-hB-ltH">
             <objects>
-                <viewController title="Login" id="iTy-DW-AkP" customClass="LoginLoginController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Login" id="iTy-DW-AkP" customClass="LoginController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ENb-37-WLV"/>
                         <viewControllerLayoutGuide type="bottom" id="Ot0-aW-XYf"/>
@@ -490,7 +490,7 @@
         <!--PhoneVerification-->
         <scene sceneID="OJs-19-uBL">
             <objects>
-                <viewController title="PhoneVerification" id="Lzv-ki-4Xk" sceneMemberID="viewController">
+                <viewController title="PhoneVerification" id="Lzv-ki-4Xk" customClass="PhoneVerificationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3ai-2E-uNP"/>
                         <viewControllerLayoutGuide type="bottom" id="sz7-Dk-a8K"/>
@@ -511,8 +511,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="9ob-sE-PHZ"/>
                                         <exclude reference="7Ed-NE-E8Y"/>
+                                        <exclude reference="9ob-sE-PHZ"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -528,8 +528,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="kkI-Sc-7mw"/>
                                         <exclude reference="DV0-jO-Lb4"/>
+                                        <exclude reference="kkI-Sc-7mw"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -545,8 +545,8 @@
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="oA3-ZQ-xFG"/>
                                         <exclude reference="LCZ-Sn-zNZ"/>
+                                        <exclude reference="oA3-ZQ-xFG"/>
                                     </mask>
                                 </variation>
                             </label>
@@ -589,7 +589,7 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Tg-VD-c8Z">
                                 <rect key="frame" x="0.0" y="451" width="375" height="216"/>
                                 <animations/>
-                                <accessibility key="accessibilityConfiguration" label="Country"/>
+                                <accessibility key="accessibilityConfiguration" label=""/>
                             </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4en-se-GgZ" userLabel="Country">
                                 <rect key="frame" x="38" y="221" width="79" height="54"/>
@@ -601,6 +601,9 @@
                                 <state key="normal" title="+1" image="US">
                                     <color key="titleColor" red="0.80784313725490198" green="0.83529411764705885" blue="0.84313725490196079" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="countryButtonClicked" destination="Lzv-ki-4Xk" eventType="touchUpInside" id="fPo-zV-dTW"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -642,6 +645,9 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="nextButton" destination="V16-TC-6ck" id="LWX-aB-RYe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqX-ln-kqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

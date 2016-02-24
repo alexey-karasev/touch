@@ -13,7 +13,7 @@
 		FA08477A1C7C2B350058FB57 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA08477C1C7C2B350058FB57 /* Main.storyboard */; };
 		FA0847821C7C2D6A0058FB57 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0847841C7C2D6A0058FB57 /* Localizable.strings */; };
 		FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0847881C7C62CE0058FB57 /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
-		FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */; settings = {ASSET_TAGS = (); }; };
+		FA0CF4C61C7669B2003E84F8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF4C51C7669B2003E84F8 /* LoginController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */; };
 		FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */; };
 		FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68551C75AA8100C415B0 /* Assets.xcassets */; };
@@ -24,6 +24,11 @@
 		FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E41C76255D00666E5C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E51C76255D00666E5C /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */; settings = {ASSET_TAGS = (); }; };
+		FAEA9A681C7E390D00F63073 /* CountryPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEA9A6A1C7E390D00F63073 /* CountryPickerView.xib */; };
+		FAEA9A701C7E401600F63073 /* CountryPickerViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAEA9A721C7E401600F63073 /* CountryPickerViewCell.xib */; };
+		FAEA9A781C7E432B00F63073 /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9A771C7E432B00F63073 /* CountryPickerController.swift */; settings = {ASSET_TAGS = (); }; };
+		FAEA9A7E1C7E481D00F63073 /* CountryPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9A7D1C7E481D00F63073 /* CountryPickerView.swift */; settings = {ASSET_TAGS = (); }; };
+		FAEA9A811C7E4A1E00F63073 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
@@ -62,7 +67,7 @@
 		FA0847831C7C2D6A0058FB57 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA0847851C7C2D6E0058FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA0847881C7C62CE0058FB57 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = utils/Utils.swift; sourceTree = "<group>"; };
-		FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginLoginController.swift; path = controllers/login/LoginLoginController.swift; sourceTree = "<group>"; };
+		FA0CF4C51C7669B2003E84F8 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = controllers/login/LoginController.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9D68531C75AA8100C415B0 /* touch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = touch.xcdatamodel; sourceTree = "<group>"; };
@@ -79,6 +84,13 @@
 		FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		FAEA9A6B1C7E391100F63073 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountryPickerView.xib; sourceTree = "<group>"; };
+		FAEA9A6D1C7E39BC00F63073 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CountryPickerView.strings; sourceTree = "<group>"; };
+		FAEA9A711C7E401600F63073 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountryPickerViewCell.xib; sourceTree = "<group>"; };
+		FAEA9A741C7E401B00F63073 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/CountryPickerViewCell.strings; sourceTree = "<group>"; };
+		FAEA9A771C7E432B00F63073 /* CountryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryPickerController.swift; path = controllers/CountryPickerController.swift; sourceTree = "<group>"; };
+		FAEA9A7D1C7E481D00F63073 /* CountryPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryPickerView.swift; path = view/CountryPickerView.swift; sourceTree = "<group>"; };
+		FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneVerificationController.swift; path = controllers/PhoneVerificationController.swift; sourceTree = "<group>"; };
 		FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = models/AppUser.swift; sourceTree = "<group>"; };
 		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
 		FAFE89921C7B15F700B3F1AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = web/Api.swift; sourceTree = "<group>"; };
@@ -205,6 +217,7 @@
 		FAC247D31C76192000666E5C /* view */ = {
 			isa = PBXGroup;
 			children = (
+				FAEA9A651C7E347F00F63073 /* country picker */,
 				FA9D68571C75AA8100C415B0 /* LaunchScreen.storyboard */,
 				FA0847781C7C2B010058FB57 /* Login.storyboard */,
 				FA08477C1C7C2B350058FB57 /* Main.storyboard */,
@@ -215,7 +228,8 @@
 		FAC247D41C76192700666E5C /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				FA0CF4C51C7669B2003E84F8 /* LoginLoginController.swift */,
+				FAEA9A7F1C7E499500F63073 /* login */,
+				FAEA9A771C7E432B00F63073 /* CountryPickerController.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -241,6 +255,25 @@
 				FA9D68551C75AA8100C415B0 /* Assets.xcassets */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		FAEA9A651C7E347F00F63073 /* country picker */ = {
+			isa = PBXGroup;
+			children = (
+				FAEA9A6A1C7E390D00F63073 /* CountryPickerView.xib */,
+				FAEA9A721C7E401600F63073 /* CountryPickerViewCell.xib */,
+				FAEA9A7D1C7E481D00F63073 /* CountryPickerView.swift */,
+			);
+			name = "country picker";
+			sourceTree = "<group>";
+		};
+		FAEA9A7F1C7E499500F63073 /* login */ = {
+			isa = PBXGroup;
+			children = (
+				FA0CF4C51C7669B2003E84F8 /* LoginController.swift */,
+				FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */,
+			);
+			name = login;
 			sourceTree = "<group>";
 		};
 		FAFE898D1C7A5AB500B3F1AC /* model */ = {
@@ -378,9 +411,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAEA9A701C7E401600F63073 /* CountryPickerViewCell.xib in Resources */,
 				FA0847761C7C2B010058FB57 /* Login.storyboard in Resources */,
 				FA0847821C7C2D6A0058FB57 /* Localizable.strings in Resources */,
 				FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */,
+				FAEA9A681C7E390D00F63073 /* CountryPickerView.xib in Resources */,
 				FAC247E21C76255D00666E5C /* Poppins-Light.ttf in Resources */,
 				FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */,
 				FAC247E11C76255D00666E5C /* Poppins-Bold.ttf in Resources */,
@@ -509,9 +544,12 @@
 				FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */,
 				FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */,
 				FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */,
-				FA0CF4C61C7669B2003E84F8 /* LoginLoginController.swift in Sources */,
+				FAEA9A811C7E4A1E00F63073 /* PhoneVerificationController.swift in Sources */,
+				FA0CF4C61C7669B2003E84F8 /* LoginController.swift in Sources */,
 				FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */,
+				FAEA9A781C7E432B00F63073 /* CountryPickerController.swift in Sources */,
 				FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */,
+				FAEA9A7E1C7E481D00F63073 /* CountryPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +620,25 @@
 				FA0847751C7C29E40058FB57 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		FAEA9A6A1C7E390D00F63073 /* CountryPickerView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEA9A6B1C7E391100F63073 /* Base */,
+				FAEA9A6D1C7E39BC00F63073 /* ru */,
+			);
+			name = CountryPickerView.xib;
+			path = view;
+			sourceTree = "<group>";
+		};
+		FAEA9A721C7E401600F63073 /* CountryPickerViewCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAEA9A711C7E401600F63073 /* Base */,
+				FAEA9A741C7E401B00F63073 /* ru */,
+			);
+			name = CountryPickerViewCell.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
