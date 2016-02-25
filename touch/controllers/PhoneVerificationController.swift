@@ -8,41 +8,66 @@
 
 import UIKit
 
-class PhoneVerificationController: UIViewController {
+class PhoneVerificationController: UIViewController, CountryPickerDelegate {
+    
+    typealias Country = CountryPickerController.Country
+    
+    lazy var countries : [Country] = {
+        var result: [Country] = []
+        result.append(Country(imageName: "US", title: NSLocalizedString("US", comment: "United States"), code: "+1"))
+        result.append(Country(imageName: "RU", title: NSLocalizedString("Russia", comment: "Russia"), code: "+7"))
+        return result
+    }()
+    
+    lazy var countryPicker:CountryPickerController = CountryPickerController.instantiate(delegate: self, countries: self.countries)
     
     @IBOutlet weak var nextButton: UIButton!
-    lazy var countryPicker:CountryPickerController = CountryPickerController()
+    @IBOutlet weak var countryButton: UIButton!
+    
+    var currentCountry: Country? {
+        willSet {
+            if (countryButton != nil) && (newValue != nil) {
+                countryButton.setTitle(newValue!.code, forState: UIControlState.Normal)
+                countryButton.setImage(newValue!.flag, forState: UIControlState.Normal)
+            }
+        }
+    }
+
+    
+    func countryPickerDismissed(country:Country?) {
+        weak var weakSelf = self
+        UIView.animateWithDuration(0.5, animations: {
+            if let ws = weakSelf {
+                ws.countryPicker.view.frame =  CGRectMake(self.view.frame.origin.x, self.view.frame.height, self.view.frame.width, self.view.frame.height)
+            }
+            }, completion: { value in
+                if let ws = weakSelf {
+                    ws.countryPicker.view.removeFromSuperview()
+                    ws.countryPicker.removeFromParentViewController()
+                }
+        })
+        if let c = country {
+            currentCountry = c
+        }
+    }
     
     @IBAction func countryButtonClicked() {
-
-//        self.modal = [self.storyboard instantiateViewControllerWithIdentifier:@"HalfModal"];
-//        [self addChildViewController:self.modal];
-//        self.modal.view.frame = CGRectMake(0, 568, 320, 284);
-//        [self.view addSubview:self.modal.view];
-//        [UIView animateWithDuration:1 animations:^{
-//        self.modal.view.frame = CGRectMake(0, 284, 320, 284);;
-//        } completion:^(BOOL finished) {
-//        [self.modal didMoveToParentViewController:self];
-//        }];
         addChildViewController(countryPicker)
         countryPicker.view.frame = CGRectMake(view.frame.origin.x, view.frame.height, view.frame.width, view.frame.height)
         view.addSubview(countryPicker.view)
+        countryPicker.selected = currentCountry
         weak var weakSelf = self
         UIView.animateWithDuration(0.5, animations: {
             if let ws = weakSelf {
                 ws.countryPicker.view.frame = CGRectMake(ws.view.frame.origin.x, ws.nextButton.frame.maxY, ws.view.frame.width, ws.view.frame.height)
             }
         })
-//        countryPicker.modalPresentationStyle = UIModalPresentationStyle.FormSheet
-//        presentViewController(countryPicker, animated: true, completion: nil)
-//        countryPicker.view.frame = CGRectMake(0, 500, 375, 300)
     }
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        currentCountry = countries[0]
     }
 
     override func didReceiveMemoryWarning() {

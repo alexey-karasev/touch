@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </mutableArray>
+        <mutableArray key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--CountryPicker-->
+        <scene sceneID="gG6-aG-A2V">
+            <objects>
+                <viewController storyboardIdentifier="CountryPicker" title="CountryPicker" id="Rns-uj-koL" customClass="CountryPickerController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rYP-Jr-Mwm"/>
+                        <viewControllerLayoutGuide type="bottom" id="nVH-pN-doO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="baD-iG-uHX">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-WM-qsX" userLabel="Close">
+                                <rect key="frame" x="20" y="28" width="28" height="28"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Kl2-ht-cTY"/>
+                                    <constraint firstAttribute="width" constant="28" id="o0U-LM-mga"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" image="Close"/>
+                                <connections>
+                                    <action selector="closeButtonClicked" destination="Rns-uj-koL" eventType="touchUpInside" id="7FH-vu-Bac"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COUNTRY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DJl-1O-h6l">
+                                <rect key="frame" x="260" y="29" width="80" height="28"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="U32-i8-9Ol"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="17"/>
+                                <color key="textColor" red="0.50196078431372548" green="0.53333333333333333" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="U32-i8-9Ol"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d9Z-Cb-ISb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" reuseIdentifier="default" id="4vp-63-B7X" customClass="CountryPickerViewCell" customModule="touch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="4vp-63-B7X" id="dp7-bj-AkZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="United States" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ihx-3w-5ro" userLabel="CountryTitle">
+                                                    <rect key="frame" x="145" y="11" width="88" height="22"/>
+                                                    <animations/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="US" translatesAutoresizingMaskIntoConstraints="NO" id="Dpx-Wm-nff" userLabel="Flag">
+                                                    <rect key="frame" x="86" y="0.0" width="25" height="43"/>
+                                                    <animations/>
+                                                </imageView>
+                                            </subviews>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstItem="Dpx-Wm-nff" firstAttribute="leading" secondItem="dp7-bj-AkZ" secondAttribute="leadingMargin" constant="78" id="4Nf-2n-avX"/>
+                                                <constraint firstItem="ihx-3w-5ro" firstAttribute="centerY" secondItem="Dpx-Wm-nff" secondAttribute="centerY" id="613-kL-yQc"/>
+                                                <constraint firstItem="Dpx-Wm-nff" firstAttribute="top" secondItem="dp7-bj-AkZ" secondAttribute="top" id="DX7-Kk-i2t"/>
+                                                <constraint firstItem="Dpx-Wm-nff" firstAttribute="centerY" secondItem="dp7-bj-AkZ" secondAttribute="centerY" id="M0m-Sr-tRz"/>
+                                                <constraint firstItem="ihx-3w-5ro" firstAttribute="leading" secondItem="Dpx-Wm-nff" secondAttribute="trailing" constant="34" id="Qyq-l7-p2y"/>
+                                                <constraint firstItem="Dpx-Wm-nff" firstAttribute="height" secondItem="dp7-bj-AkZ" secondAttribute="height" id="en4-Ad-j57"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                        <edgeInsets key="layoutMargins" top="8" left="0.0" bottom="8" right="8"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="flag" destination="Dpx-Wm-nff" id="Kto-JI-Iwd"/>
+                                            <outlet property="title" destination="ihx-3w-5ro" id="vsI-R0-mqi"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vV2-WM-qsX" firstAttribute="top" secondItem="rYP-Jr-Mwm" secondAttribute="bottom" constant="8" symbolic="YES" id="1Ec-NE-1gK"/>
+                            <constraint firstItem="DJl-1O-h6l" firstAttribute="centerY" secondItem="vV2-WM-qsX" secondAttribute="centerY" constant="1" id="K3W-mv-f3m"/>
+                            <constraint firstItem="DJl-1O-h6l" firstAttribute="top" secondItem="rYP-Jr-Mwm" secondAttribute="bottom" constant="11" id="NRd-ls-Ide"/>
+                            <constraint firstAttribute="trailing" secondItem="d9Z-Cb-ISb" secondAttribute="trailing" id="TrR-2h-PKj"/>
+                            <constraint firstItem="nVH-pN-doO" firstAttribute="top" secondItem="d9Z-Cb-ISb" secondAttribute="bottom" id="bnb-Ss-UaK"/>
+                            <constraint firstItem="DJl-1O-h6l" firstAttribute="centerX" secondItem="baD-iG-uHX" secondAttribute="centerX" id="f4s-SL-JZq"/>
+                            <constraint firstItem="vV2-WM-qsX" firstAttribute="leading" secondItem="baD-iG-uHX" secondAttribute="leadingMargin" id="vf5-wc-4hU"/>
+                            <constraint firstItem="d9Z-Cb-ISb" firstAttribute="top" secondItem="DJl-1O-h6l" secondAttribute="bottom" constant="7" id="vpn-gb-9Vx"/>
+                            <constraint firstAttribute="leading" secondItem="d9Z-Cb-ISb" secondAttribute="leading" id="xQO-Yx-v2y"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="NRd-ls-Ide"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="table" destination="d9Z-Cb-ISb" id="vMb-ef-ZcB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YbG-mq-81Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="360" y="508"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Close" width="14" height="14"/>
+        <image name="US" width="25" height="18"/>
+    </resources>
+</document>

@@ -8,29 +8,103 @@
 
 import UIKit
 
-class CountryPickerController: UIViewController {
+protocol CountryPickerDelegate {
+    func countryPickerDismissed(country:CountryPickerController.Country?)
+}
+
+class CountryPickerController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    class Country {
+        let imageName:String
+        let flag:UIImage?
+        let title:String
+        let code:String
+        
+        init(imageName:String, title:String, code:String) {
+            self.imageName = imageName
+            self.title = title
+            self.flag = UIImage(named: imageName)
+            self.code = code
+        }
+        
+    }
+    
+    @IBOutlet weak var table: UITableView!
+
+    var delegate: CountryPickerDelegate?
+    var countries: [Country] = []
+    var selected: Country? {
+        willSet {
+            if newValue != nil && table != nil {
+                var number = 0;
+                for (index, country) in countries.enumerate() {
+                    if country === newValue! {
+                        number = index
+                        break
+                    }
+                }
+                table.selectRowAtIndexPath(NSIndexPath(forRow: number, inSection: 0), animated: false, scrollPosition: UITableViewScrollPosition.None)
+            }
+        }
+    }
+    
+    static func instantiate(delegate delegate: CountryPickerDelegate, countries: [Country]) -> CountryPickerController {
+        let sb = UIStoryboard(name: "Common", bundle: nil)
+        let vc = sb.instantiateViewControllerWithIdentifier("CountryPicker")
+        let result = vc as! CountryPickerController
+        result.delegate = delegate
+        result.countries = countries
+        return result
+    }
     
     @IBAction func closeButtonClicked() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        if let d = delegate {
+            d.countryPickerDismissed(nil)
+        }
     }
     
-    convenience init() {
-        self.init(nibName: "CountryPickerView", bundle: nil)
+//    Table view controller
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return countries.count
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
 
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let c = table.dequeueReusableCellWithIdentifier("default")
+        let cell = c as! CountryPickerViewCell
+        let country = countries[indexPath.item]
+        cell.title.text = country.title
+        cell.flag.image = country.flag
+        return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let d = delegate {
+            let country = countries[indexPath.item]
+            d.countryPickerDismissed(country)
+        }
+    }
+    
+//    Default methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Ti")
-
-        // Do any additional setup after loading the view.
+        table.delegate = self
+        table.dataSource = self
+        
+        // update selected row if the table view didn't exist when selected was set
+        let s = selected
+        selected = nil
+        selected = s
+        
+        //adding top and bottom separators
+        let px = 1 / UIScreen.mainScreen().scale
+        let frameTop = CGRectMake(0, 0, table.frame.size.width, px)
+        let lineTop: UIView = UIView(frame: frameTop)
+        lineTop.backgroundColor = table.separatorColor
+        table.tableHeaderView = lineTop
+        table.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {

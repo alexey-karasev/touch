@@ -8,3 +8,5 @@
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";
 "UNKNOWN_CONNECTION_ERROR" = "Неизвестная ошибка подключения";
 "INVALID_USERNAME_OR_PASSWORD" = "Неверное имя пользователя или пароль";
+"US" = "США";
+"Russia" = "РОССИЯ";
