@@ -29,7 +29,7 @@ class LoginController: UIViewController {
             return
         }
         let payload = ["username":email!, "password":password!]
-        Utils.shared.addOverlayToView(self.view)
+        Utils.shared.addOverlayToView(self.view, withHUD:true, blockActivity:true)
         WebApi.shared.post(url: "/users/login", payload:payload) { data, error in
             Utils.shared.dismissOverlay()
             if error != nil {

@@ -17,16 +17,21 @@ class Utils {
         alert.show()
     }
     
-    func addOverlayToView(parent:UIView) {
+    func addOverlayToView(parent:UIView, withHUD:Bool = false, blockActivity:Bool = false, opacity: Float = 0.6) {
         let screenRect = UIScreen.mainScreen().bounds
         let coverView = UIView(frame: screenRect)
-        coverView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
-        let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
-        activity.center = coverView.center
-        coverView.addSubview(activity)
-        activity.startAnimating()
+        coverView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(CGFloat(opacity))
+        if withHUD {
+            let activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.WhiteLarge)
+            activity.center = coverView.center
+            coverView.addSubview(activity)
+            activity.startAnimating()
+        }
         parent.addSubview(coverView)
-        parent.userInteractionEnabled = false
+        
+        if blockActivity {
+            parent.userInteractionEnabled = false
+        }
         self.overlay = coverView
     }
     
