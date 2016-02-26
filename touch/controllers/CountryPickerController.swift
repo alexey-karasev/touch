@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol CountryPickerDelegate {
+protocol CountryPickerDelegate: class {
     func countryPickerDismissed(country:CountryPickerController.Country?)
 }
 
@@ -30,8 +30,10 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     @IBOutlet weak var table: UITableView!
-
-    var delegate: CountryPickerDelegate?
+    var overlayTap:UIGestureRecognizer!
+    weak var target: UIViewController?
+    weak var delegate: CountryPickerDelegate?
+    
     var countries: [Country] = []
     var selected: Country? {
         willSet {
@@ -48,6 +50,9 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
+    
+    // Static constructor, used because initialization by Storyboard returns instantiated controller
+    // Delegate is called with the selected country, countries is the list of countries
     static func instantiate(delegate delegate: CountryPickerDelegate, countries: [Country]) -> CountryPickerController {
         let sb = UIStoryboard(name: "Common", bundle: nil)
         let vc = sb.instantiateViewControllerWithIdentifier("CountryPicker")
@@ -57,10 +62,56 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
         return result
     }
     
-    @IBAction func closeButtonClicked() {
+    
+    // Behavior of the controller
+    
+    
+    // target - the controller where Country Picker will be presented
+    // top - top of the Country picker (0 = fullscreen)
+    // currentCountry - used to highlight selected country cell
+    func present(target: UIViewController, top:CGFloat, currentCountry: Country?) {
+        Utils.shared.addOverlayToView(target.view)
+        overlayTap = UITapGestureRecognizer(target: self, action: Selector("overlayTapped:"))
+        Utils.shared.overlay!.addGestureRecognizer(overlayTap)
+        target.addChildViewController(self)
+        view.frame = CGRectMake(target.view.frame.origin.x, target.view.frame.height, target.view.frame.width, target.view.frame.height)
+        target.view.addSubview(view)
+        selected = currentCountry
+        self.target = target
+        UIView.animateWithDuration(0.5, animations: { [weak self] in
+            if self != nil && self!.target != nil{
+                self!.view.frame = CGRectMake(self!.target!.view.frame.origin.x, top,
+                    self!.target!.view.frame.width, self!.target!.view.frame.height)
+            }
+        })
+    }
+    
+    // dismisses the Country picker and calls back delegate with selected country
+    private func dismiss(country: Country?) {
         if let d = delegate {
-            d.countryPickerDismissed(nil)
+            d.countryPickerDismissed(country)
         }
+        Utils.shared.dismissOverlay()
+        UIView.animateWithDuration(0.5, animations: { [weak self] in
+            if self != nil {
+                self!.view.frame =  CGRectMake(self!.target!.view.frame.origin.x, self!.target!.view.frame.height, self!.target!.view.frame.width, self!.target!.view.frame.height)
+            }
+            }, completion: { [weak self] (value) in
+                if self != nil {
+                    self!.view.removeGestureRecognizer(self!.overlayTap!)
+                    self!.overlayTap = nil
+                    self!.view.removeFromSuperview()
+                    self!.removeFromParentViewController()
+                }
+            })
+    }
+
+    func overlayTapped(recognizer: UITapGestureRecognizer) {
+        dismiss(nil)
+    }
+    
+    @IBAction func closeButtonClicked() {
+        dismiss(nil)
     }
     
 //    Table view controller
@@ -80,10 +131,8 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let d = delegate {
-            let country = countries[indexPath.item]
-            d.countryPickerDismissed(country)
-        }
+        let country = countries[indexPath.item]
+        dismiss(country)
     }
     
 //    Default methods
@@ -109,18 +158,5 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
