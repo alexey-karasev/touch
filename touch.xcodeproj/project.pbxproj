@@ -14,6 +14,8 @@
 		FA0847821C7C2D6A0058FB57 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FA0847841C7C2D6A0058FB57 /* Localizable.strings */; };
 		FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0847881C7C62CE0058FB57 /* Utils.swift */; settings = {ASSET_TAGS = (); }; };
 		FA0CF4C61C7669B2003E84F8 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0CF4C51C7669B2003E84F8 /* LoginController.swift */; settings = {ASSET_TAGS = (); }; };
+		FA2E037E1C8371E80016E14A /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E037D1C8371E80016E14A /* Api.swift */; settings = {ASSET_TAGS = (); }; };
+		FA2E03801C837E610016E14A /* LoginApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2E037F1C837E610016E14A /* LoginApi.swift */; settings = {ASSET_TAGS = (); }; };
 		FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */; };
 		FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA9D68521C75AA8100C415B0 /* touch.xcdatamodeld */; };
 		FA9D68561C75AA8100C415B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9D68551C75AA8100C415B0 /* Assets.xcassets */; };
@@ -24,6 +26,7 @@
 		FAC247E31C76255D00666E5C /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E41C76255D00666E5C /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */; settings = {ASSET_TAGS = (); }; };
 		FAC247E51C76255D00666E5C /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */; settings = {ASSET_TAGS = (); }; };
+		FAE426CC1C80EE6100078CED /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE426CB1C80EE6100078CED /* SignUpController.swift */; settings = {ASSET_TAGS = (); }; };
 		FAEA9A781C7E432B00F63073 /* CountryPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9A771C7E432B00F63073 /* CountryPickerController.swift */; settings = {ASSET_TAGS = (); }; };
 		FAEA9A811C7E4A1E00F63073 /* PhoneVerificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */; settings = {ASSET_TAGS = (); }; };
 		FAEBAD2C1C7F5A0100FC2355 /* Common.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEBAD2E1C7F5A0100FC2355 /* Common.storyboard */; };
@@ -31,7 +34,7 @@
 		FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898C1C7A5AAE00B3F1AC /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
-		FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE89921C7B15F700B3F1AC /* Api.swift */; settings = {ASSET_TAGS = (); }; };
+		FAFE89931C7B15F700B3F1AC /* WebApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE89921C7B15F700B3F1AC /* WebApi.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +70,8 @@
 		FA0847851C7C2D6E0058FB57 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FA0847881C7C62CE0058FB57 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = utils/Utils.swift; sourceTree = "<group>"; };
 		FA0CF4C51C7669B2003E84F8 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginController.swift; path = controllers/login/LoginController.swift; sourceTree = "<group>"; };
+		FA2E037D1C8371E80016E14A /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = web/Api.swift; sourceTree = "<group>"; };
+		FA2E037F1C837E610016E14A /* LoginApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginApi.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D684B1C75AA8100C415B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9D68531C75AA8100C415B0 /* touch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = touch.xcdatamodel; sourceTree = "<group>"; };
@@ -83,6 +88,7 @@
 		FAC247DE1C76255D00666E5C /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		FAC247DF1C76255D00666E5C /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		FAC247E01C76255D00666E5C /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		FAE426CB1C80EE6100078CED /* SignUpController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpController.swift; path = controllers/login/SignUpController.swift; sourceTree = "<group>"; };
 		FAEA9A771C7E432B00F63073 /* CountryPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryPickerController.swift; path = controllers/CountryPickerController.swift; sourceTree = "<group>"; };
 		FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneVerificationController.swift; path = controllers/PhoneVerificationController.swift; sourceTree = "<group>"; };
 		FAEBAD2D1C7F5A0100FC2355 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Common.storyboard; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 		FAEBAD331C7F671700FC2355 /* CountryPickerViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryPickerViewCell.swift; path = view/CountryPickerViewCell.swift; sourceTree = "<group>"; };
 		FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = models/AppUser.swift; sourceTree = "<group>"; };
 		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
-		FAFE89921C7B15F700B3F1AC /* Api.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Api.swift; path = web/Api.swift; sourceTree = "<group>"; };
+		FAFE89921C7B15F700B3F1AC /* WebApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebApi.swift; path = web/WebApi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,7 @@
 		FAC247D21C76191A00666E5C /* model */ = {
 			isa = PBXGroup;
 			children = (
+				FAE426CD1C80F80D00078CED /* login */,
 				FAFE89911C7B15C100B3F1AC /* core data */,
 				FAFE898A1C7A5AAE00B3F1AC /* AppUser.swift */,
 			);
@@ -254,11 +261,19 @@
 			name = resources;
 			sourceTree = "<group>";
 		};
+		FAE426CD1C80F80D00078CED /* login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = login;
+			sourceTree = "<group>";
+		};
 		FAEA9A7F1C7E499500F63073 /* login */ = {
 			isa = PBXGroup;
 			children = (
 				FA0CF4C51C7669B2003E84F8 /* LoginController.swift */,
 				FAEA9A801C7E4A1E00F63073 /* PhoneVerificationController.swift */,
+				FAE426CB1C80EE6100078CED /* SignUpController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -291,7 +306,9 @@
 		FAFE89901C7B15B300B3F1AC /* web */ = {
 			isa = PBXGroup;
 			children = (
-				FAFE89921C7B15F700B3F1AC /* Api.swift */,
+				FAFE89921C7B15F700B3F1AC /* WebApi.swift */,
+				FA2E037D1C8371E80016E14A /* Api.swift */,
+				FA2E037F1C837E610016E14A /* LoginApi.swift */,
 			);
 			name = web;
 			sourceTree = "<group>";
@@ -544,11 +561,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAFE89931C7B15F700B3F1AC /* Api.swift in Sources */,
+				FAFE89931C7B15F700B3F1AC /* WebApi.swift in Sources */,
+				FA2E03801C837E610016E14A /* LoginApi.swift in Sources */,
 				FAFE898B1C7A5AAE00B3F1AC /* AppUser.swift in Sources */,
 				FA9D68541C75AA8100C415B0 /* touch.xcdatamodeld in Sources */,
 				FAEA9A811C7E4A1E00F63073 /* PhoneVerificationController.swift in Sources */,
 				FA0CF4C61C7669B2003E84F8 /* LoginController.swift in Sources */,
+				FA2E037E1C8371E80016E14A /* Api.swift in Sources */,
+				FAE426CC1C80EE6100078CED /* SignUpController.swift in Sources */,
 				FA9D684C1C75AA8100C415B0 /* AppDelegate.swift in Sources */,
 				FAEA9A781C7E432B00F63073 /* CountryPickerController.swift in Sources */,
 				FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */,

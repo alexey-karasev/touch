@@ -3,6 +3,10 @@
 "ERROR" = "Ошибка";
 "OK" = "Ок";
 "PASSWORD_FIELD_REQUIRED" = "Пожалуйста, введите пароль";
+"LOGIN_FIELD_REQUIRED" = "Пожалуйста, укажите логин";
+"NAME_FIELD_REQUIRED" = "Пожалуйста, укажите Ваше имя";
+"PHONE_FIELD_REQUIRED" = "Пожалуйста, укажите Ваш номер телефона";
+"VERIFICATION_FIELD_REQUIRED" = "Пожалуйста, укажите код подтверждения";
 "CANNOT_NOT_CONNECT_TO_SERVER" = "Не удалось подключиться к серверу";
 "REQUEST_TO_SERVER_TIMED_OUT" = "Сервер не отвечает";
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";

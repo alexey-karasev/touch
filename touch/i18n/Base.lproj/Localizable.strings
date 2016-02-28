@@ -3,6 +3,10 @@
 "ERROR" = "Error";
 "OK" = "Ok";
 "PASSWORD_FIELD_REQUIRED" = "Password field is required";
+"LOGIN_FIELD_REQUIRED" = "Login field is required";
+"NAME_FIELD_REQUIRED" = "Name field is required";
+"PHONE_FIELD_REQUIRED" = "Phone field is required";
+"VERIFICATION_FIELD_REQUIRED" = "Verification field is required";
 "CANNOT_NOT_CONNECT_TO_SERVER" = "Could not connect to server";
 "REQUEST_TO_SERVER_TIMED_OUT" = "Request to server timed out";
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone is not connected to internet";
