@@ -362,7 +362,7 @@
                         <outlet property="loginField" destination="2UG-iB-zrQ" id="CAd-Hg-OCq"/>
                         <outlet property="nameField" destination="Kfq-UH-BC6" id="8DO-hs-hos"/>
                         <outlet property="passwordField" destination="haj-YR-FD3" id="7q2-Ip-a15"/>
-                        <segue destination="Lzv-ki-4Xk" kind="show" identifier="toPhoneVerification" id="q9H-Lh-ioU"/>
+                        <segue destination="Lzv-ki-4Xk" kind="show" identifier="fromSignUpToPhoneVerification" id="q9H-Lh-ioU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1f-o7-odG" userLabel="First Responder" sceneMemberID="firstResponder"/>

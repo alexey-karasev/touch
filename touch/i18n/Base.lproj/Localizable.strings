@@ -1,16 +1,25 @@
 "INVALID_EMAIL" = "Invalid email format";
 "USERNAME_FIELD_REQUIRED" = "Username field is required. Please enter your email, phone or login";
+
 "ERROR" = "Error";
 "OK" = "Ok";
+"EMAIL_IS_NOT_UNIQUE" = "The user with this email already exists";
+"PHONE_IS_NOT_UNIQUE" = "The user with this phone already exists";
+"LOGIN_IS_NOT_UNIQUE" = "The user with this login already exists";
+
 "PASSWORD_FIELD_REQUIRED" = "Password field is required";
 "LOGIN_FIELD_REQUIRED" = "Login field is required";
 "NAME_FIELD_REQUIRED" = "Name field is required";
 "PHONE_FIELD_REQUIRED" = "Phone field is required";
 "VERIFICATION_FIELD_REQUIRED" = "Verification field is required";
-"CANNOT_NOT_CONNECT_TO_SERVER" = "Could not connect to server";
-"REQUEST_TO_SERVER_TIMED_OUT" = "Request to server timed out";
-"IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone is not connected to internet";
+
 "UNKNOWN_CONNECTION_ERROR" = "Unknown connection error";
 "INVALID_USERNAME_OR_PASSWORD" = "Invalid username or password";
 "US" = "UNITED STATES";
 "Russia" = "RUSSIA";
+
+"CANNOT_NOT_CONNECT_TO_SERVER" = "Could not connect to server";
+"REQUEST_TO_SERVER_TIMED_OUT" = "Request to server timed out";
+"IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone is not connected to internet";
+"UNKNOWN_SERVER_ERROR" = "Unknown server error";
+"INVALID_TOKEN" = "The server issued invalid token";

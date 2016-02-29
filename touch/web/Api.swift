@@ -43,4 +43,27 @@ class API: ApiProtocol {
     func post(url url:String, payload:Json?, callback:ApiCallback) {
         delegate.post(url: url, payload: payload, callback: callback)
     }
+    
+    
+    // Displays an alert, prints into consolse and returns true if the error is generic, returns false o/w
+    func alertGenericApiError(error: ApiError, errorPayload: Json?) -> Bool {
+        if errorPayload == nil {
+            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+            return false
+        }
+        switch error {
+        case .ServerTimeout:
+            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("REQUEST_TO_SERVER_TIMED_OUT", comment: "REQUEST_TO_SERVER_TIMED_OUT"))
+        case .ServerUnreachable:
+            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("CANNOT_NOT_CONNECT_TO_SERVER", comment: "CANNOT_NOT_CONNECT_TO_SERVER"))
+        case .IphoneNotConnected:
+            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("IPHONE_NOT_CONNECTED_TO_INTERNET", comment: "IPHONE_NOT_CONNECTED_TO_INTERNET"))
+        case .UnknownServer:
+            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+        default:
+            return false
+        }
+        print("Error: \(error), payload: \(errorPayload)")
+        return true
+    }
 }

@@ -24,15 +24,15 @@ class AppUser {
     let token:String
     let email:String
     let login:String
-    let phone:String
-    let name:String
+    let phone:String?
+    let confirmed: Bool
     
-    init(token:String, email:String, login:String, phone:String, name:String) {
+    init(token:String, email:String, login:String, phone:String?, confirmed:Bool) {
         self.token = token
         self.email = email
         self.login = login
         self.phone = phone
-        self.name = name
+        self.confirmed = confirmed
     }
     
     convenience init() throws {
@@ -47,12 +47,11 @@ class AppUser {
             throw AppUserError.InvalidToken
         } else {
             let body = jwt!.body
-            if (body["email"] == nil) || (body["login"] == nil)
-                || (body["phone"] == nil) || (body["name"] == nil) || (body["exp"] == nil) {
+            if (body["email"] == nil) || (body["login"] == nil) || (body["exp"] == nil) || (body["confirmed"] == nil) {
                     throw AppUserError.MissingFieldsInToken
             }
             self.init(token:token, email:body["email"] as! String, login:body["login"] as! String,
-                phone:body["phone"] as! String, name:body["name"] as! String)
+                phone:body["phone"] as? String, confirmed:body["confirmed"] as! Bool)
         }
         Lockbox.archiveObject(self.token, forKey: AppUser.lockboxKey)
     }

@@ -28,15 +28,7 @@ class SignUpController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        let validation = validate()
-        if validation != nil {
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation!)
-            return false
-        }
-        return true
-    }
+
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 
@@ -47,6 +39,17 @@ class SignUpController: UIViewController {
         if validation != nil {
             Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation!)
             return
+        }
+        LoginAPI.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self] (token, success) -> Void in
+            if success && (token != nil) && (self != nil) {
+                do {
+                   try AppUser.update(token!)
+                    self!.performSegueWithIdentifier("fromSignUpToPhoneVerification", sender: self!)
+                }
+                catch {
+                    Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: NSLocalizedString("INVALID_TOKEN", comment: "INVALID_TOKEN"))
+                }
+            }
         }
         
     }

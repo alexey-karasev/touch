@@ -42,4 +42,5 @@ class Utils {
             self.overlay = nil
         }
     }
+
 }
