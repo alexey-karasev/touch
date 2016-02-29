@@ -31,9 +31,9 @@ class LoginAPI {
                         }
                         switch field! {
                         case "email":
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("EMAIL_NOT_UNIQUE", comment: "EMAIL_NOT_UNIQUE"))
+                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("EMAIL_IS_NOT_UNIQUE", comment: "EMAIL_NOT_UNIQUE"))
                         case "login":
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("LOGIN_NOT_UNIQUE", comment: "LOGIN_NOT_UNIQUE"))
+                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("LOGIN_IS_NOT_UNIQUE", comment: "LOGIN_NOT_UNIQUE"))
                         default:
                             Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
                         }
