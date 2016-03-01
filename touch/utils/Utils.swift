@@ -17,6 +17,10 @@ class Utils {
         alert.show()
     }
     
+    func alertError(name:String) {
+        alert(header: localString("ERROR"), message: localString(name))
+    }
+    
     func addOverlayToView(parent:UIView, withHUD:Bool = false, blockActivity:Bool = false, opacity: Float = 0.6) {
         let screenRect = UIScreen.mainScreen().bounds
         let coverView = UIView(frame: screenRect)
@@ -41,6 +45,10 @@ class Utils {
             overlay.removeFromSuperview()
             self.overlay = nil
         }
+    }
+    
+    func localString(name:String) -> String{
+        return NSLocalizedString(name, comment: name)
     }
 
 }

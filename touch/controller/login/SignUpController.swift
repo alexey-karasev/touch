@@ -40,7 +40,7 @@ class SignUpController: UIViewController {
             Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation!)
             return
         }
-        LoginAPI.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self] (token, success) -> Void in
+        LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self] (token, success) -> Void in
             if success && (token != nil) && (self != nil) {
                 do {
                    try AppUser.update(token!)

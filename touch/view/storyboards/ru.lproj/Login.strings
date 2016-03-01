@@ -1,0 +1,126 @@
+
+/* Class = "UILabel"; text = "You’ll be able to invite anyone in your address book to your activities"; ObjectID = "1Mf-nK-OdE"; */
+"1Mf-nK-OdE.text" = "You’ll be able to invite anyone in your address book to your activities";
+
+/* Class = "UILabel"; text = "You’ll be able to invite anyone in your address book to your activities"; ObjectID = "2QE-Bd-VSh"; */
+"2QE-Bd-VSh.text" = "You’ll be able to invite anyone in your address book to your activities";
+
+/* Class = "UITextField"; placeholder = "Login"; ObjectID = "2UG-iB-zrQ"; */
+"2UG-iB-zrQ.placeholder" = "Login";
+
+/* Class = "UIButton"; normalTitle = "+1"; ObjectID = "4en-se-GgZ"; */
+"4en-se-GgZ.normalTitle" = "+1";
+
+/* Class = "UILabel"; text = "We'll send you a code to make sure it's you"; ObjectID = "5HM-Uw-W0H"; */
+"5HM-Uw-W0H.text" = "We'll send you a code to make sure it's you";
+
+/* Class = "UILabel"; text = "Connect contacts"; ObjectID = "950-90-5uG"; */
+"950-90-5uG.text" = "Connect contacts";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "BVB-jj-b2B"; */
+"BVB-jj-b2B.placeholder" = "Email";
+
+/* Class = "UIViewController"; title = "ProfilePicture"; ObjectID = "FpU-WQ-CnE"; */
+"FpU-WQ-CnE.title" = "ProfilePicture";
+
+/* Class = "UILabel"; text = "Status"; ObjectID = "GVY-v1-YGm"; */
+"GVY-v1-YGm.text" = "Status";
+
+/* Class = "UIViewController"; title = "PhoneConfirmation"; ObjectID = "IoW-Os-3zj"; */
+"IoW-Os-3zj.title" = "PhoneConfirmation";
+
+/* Class = "UITextField"; placeholder = "Phone number"; ObjectID = "KV6-ef-G4P"; */
+"KV6-ef-G4P.placeholder" = "Phone number";
+
+/* Class = "UITextField"; placeholder = "Name"; ObjectID = "Kfq-UH-BC6"; */
+"Kfq-UH-BC6.placeholder" = "Name";
+
+/* Class = "UIButton"; normalTitle = "Sign up with email"; ObjectID = "KrL-Yq-Edg"; */
+"KrL-Yq-Edg.normalTitle" = "Sign up with email";
+
+/* Class = "UIViewController"; title = "PhoneVerification"; ObjectID = "Lzv-ki-4Xk"; */
+"Lzv-ki-4Xk.title" = "PhoneVerification";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "O4S-WG-agu"; */
+"O4S-WG-agu.placeholder" = "Password";
+
+/* Class = "UILabel"; text = "verify your phone"; ObjectID = "QLn-NZ-NvH"; */
+"QLn-NZ-NvH.text" = "verify your phone";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "Rah-EK-nT8"; */
+"Rah-EK-nT8.normalTitle" = "Next";
+
+/* Class = "UITextField"; placeholder = "Code"; ObjectID = "T7P-Ec-1Uv"; */
+"T7P-Ec-1Uv.placeholder" = "Code";
+
+/* Class = "UIButton"; normalTitle = "Not now"; ObjectID = "Ytm-8f-M3A"; */
+"Ytm-8f-M3A.normalTitle" = "Not now";
+
+/* Class = "UINavigationController"; title = "Nav"; ObjectID = "YvC-mS-tby"; */
+"YvC-mS-tby.title" = "Nav";
+
+/* Class = "UILabel"; text = "Enter the code you received"; ObjectID = "b4H-ap-73I"; */
+"b4H-ap-73I.text" = "Enter the code you received";
+
+/* Class = "UITextField"; placeholder = "Email, Username or Phonenumber"; ObjectID = "crR-yO-0cO"; */
+"crR-yO-0cO.placeholder" = "Email, Username or Phonenumber";
+
+/* Class = "UIViewController"; title = "Root"; ObjectID = "d1K-1u-kE9"; */
+"d1K-1u-kE9.title" = "Root";
+
+/* Class = "UIViewController"; title = "Sign Up Email"; ObjectID = "dHp-9F-7CA"; */
+"dHp-9F-7CA.title" = "Sign Up Email";
+
+/* Class = "UIButton"; normalTitle = "sign in"; ObjectID = "eiC-RB-Avt"; */
+"eiC-RB-Avt.normalTitle" = "sign in";
+
+/* Class = "UILabel"; text = "verify your phone"; ObjectID = "er2-dd-Sht"; */
+"er2-dd-Sht.text" = "verify your phone";
+
+/* Class = "UILabel"; text = "Enter your phone number"; ObjectID = "hRc-F6-kq7"; */
+"hRc-F6-kq7.text" = "Enter your phone number";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "haj-YR-FD3"; */
+"haj-YR-FD3.placeholder" = "Password";
+
+/* Class = "UIViewController"; title = "FacebookTeaser"; ObjectID = "iLk-SR-ksw"; */
+"iLk-SR-ksw.title" = "FacebookTeaser";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "iTy-DW-AkP"; */
+"iTy-DW-AkP.title" = "Login";
+
+/* Class = "UILabel"; text = "Full Name"; ObjectID = "jay-rE-If8"; */
+"jay-rE-If8.text" = "Full Name";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "jle-jf-2xP"; */
+"jle-jf-2xP.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Get help signing in"; ObjectID = "k72-Ee-jS0"; */
+"k72-Ee-jS0.normalTitle" = "Get help signing in";
+
+/* Class = "UIViewController"; title = "Contacts"; ObjectID = "kzK-zP-h4T"; */
+"kzK-zP-h4T.title" = "Contacts";
+
+/* Class = "UILabel"; text = "sign up"; ObjectID = "lyS-IU-wMp"; */
+"lyS-IU-wMp.text" = "sign up";
+
+/* Class = "UIButton"; normalTitle = "Resend code"; ObjectID = "nRf-zP-6gV"; */
+"nRf-zP-6gV.normalTitle" = "Resend code";
+
+/* Class = "UIButton"; normalTitle = "Let's do it"; ObjectID = "nVE-n3-nLS"; */
+"nVE-n3-nLS.normalTitle" = "Let's do it";
+
+/* Class = "UILabel"; text = "Connect Facebook to see friends using Let’s\n "; ObjectID = "stA-gK-HbB"; */
+"stA-gK-HbB.text" = "Connect Facebook to see friends using Let’s\n ";
+
+/* Class = "UIButton"; normalTitle = "Sign up using Google"; ObjectID = "xEd-ok-Dv8"; */
+"xEd-ok-Dv8.normalTitle" = "Sign up using Google";
+
+/* Class = "UILabel"; text = "sign in"; ObjectID = "xc8-lL-B4c"; */
+"xc8-lL-B4c.text" = "sign in";
+
+/* Class = "UILabel"; text = "do more"; ObjectID = "yeB-31-JdK"; */
+"yeB-31-JdK.text" = "do more";
+
+/* Class = "UIButton"; normalTitle = "Sign up using Facebook"; ObjectID = "zDk-hu-3dg"; */
+"zDk-hu-3dg.normalTitle" = "Sign up using Facebook";

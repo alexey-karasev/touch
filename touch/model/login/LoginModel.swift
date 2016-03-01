@@ -8,8 +8,8 @@
 
 import UIKit
 
-class LoginAPI {
-    static var shared = LoginAPI()
+class LoginModel {
+    static var shared = LoginModel()
     
     func signup(name: String, login: String, email: String, password: String, callback:(token:String?, success: Bool) -> Void) {
         let payload: Json = [
@@ -25,33 +25,33 @@ class LoginAPI {
                     case .NotUniqueField:
                         let field = errorPayload!["field"] as? String
                         if field == nil {
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+                            Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
                             callback(token: nil, success: false)
                             return
                         }
                         switch field! {
                         case "email":
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("EMAIL_IS_NOT_UNIQUE", comment: "EMAIL_NOT_UNIQUE"))
+                            Utils.shared.alertError("EMAIL_IS_NOT_UNIQUE")
                         case "login":
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("LOGIN_IS_NOT_UNIQUE", comment: "LOGIN_NOT_UNIQUE"))
+                            Utils.shared.alertError("LOGIN_IS_NOT_UNIQUE")
                         default:
-                            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+                            Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
                         }
                     default:
-                        Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+                        Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
                     }
                 }
                 callback(token: nil, success: false)
                 return
             }
             if data == nil {
-                Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+                Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
                 callback(token: nil, success: false)
                 return
             }
             let token = data!["token"] as? String
             if token == nil {
-                Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
+                Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
                 callback(token: nil, success: false)
                 return
             }
