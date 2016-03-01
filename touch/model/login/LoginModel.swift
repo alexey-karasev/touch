@@ -18,44 +18,23 @@ class LoginModel {
             "email": email,
             "password": password
         ]
-        API.shared.post(url: "/users/register", payload: payload) { (data, error, errorPayload) -> Void in
-            if let err = error {
-                if !API.shared.alertGenericApiError(err, errorPayload: payload) {
-                    switch err {
-                    case .NotUniqueField:
-                        let field = errorPayload!["field"] as? String
-                        if field == nil {
-                            Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
-                            callback(token: nil, success: false)
-                            return
-                        }
-                        switch field! {
-                        case "email":
-                            Utils.shared.alertError("EMAIL_IS_NOT_UNIQUE")
-                        case "login":
-                            Utils.shared.alertError("LOGIN_IS_NOT_UNIQUE")
-                        default:
-                            Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
-                        }
-                    default:
-                        Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
-                    }
+        API.shared.post(url: "/users/register", payload: payload) { (data, success, payload) -> Void in
+            if success {
+                if data == nil {
+                    API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil data returned in /users/register on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
+                    callback(token: nil, success: false)
+                    return
                 }
+                let token = data!["token"] as? String
+                if token == nil {
+                    API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil token returned in /users/register on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
+                    callback(token: nil, success: false)
+                    return
+                }
+                callback(token: token!, success: true)
+            } else {
                 callback(token: nil, success: false)
-                return
             }
-            if data == nil {
-                Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false)
-                return
-            }
-            let token = data!["token"] as? String
-            if token == nil {
-                Utils.shared.alertError("UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false)
-                return
-            }
-            callback(token: token, success: true)
         }
     }
     

@@ -32,7 +32,6 @@
 		FA3F5B701C855BD500B7180A /* CountryPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B6F1C855BD500B7180A /* CountryPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		FA3F5B721C855BE200B7180A /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B711C855BE200B7180A /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FA3F5B751C855C0400B7180A /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B731C855C0400B7180A /* touch.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
-		FA3F5B791C855CBF00B7180A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA3F5B781C855CBF00B7180A /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -453,7 +452,6 @@
 				FA3F5B651C855B9900B7180A /* Login.storyboard in Resources */,
 				FA3F5B271C855A6400B7180A /* Poppins-Regular.ttf in Resources */,
 				FA3F5B601C855B8A00B7180A /* LaunchScreen.storyboard in Resources */,
-				FA3F5B791C855CBF00B7180A /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

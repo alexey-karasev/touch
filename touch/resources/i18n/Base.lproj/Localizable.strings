@@ -21,5 +21,7 @@
 "CANNOT_NOT_CONNECT_TO_SERVER" = "Could not connect to server";
 "REQUEST_TO_SERVER_TIMED_OUT" = "Request to server timed out";
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone is not connected to internet";
+"UNEXPECTED_SERVER_RESPONSE" = "Unexpected server response";
 "UNKNOWN_SERVER_ERROR" = "Unknown server error";
+"UNKNOWN_ERROR" = "Unknown error";
 "INVALID_TOKEN" = "The server issued invalid token";

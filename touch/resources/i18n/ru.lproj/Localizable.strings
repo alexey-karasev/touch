@@ -21,5 +21,7 @@
 "CANNOT_NOT_CONNECT_TO_SERVER" = "Не удалось подключиться к серверу";
 "REQUEST_TO_SERVER_TIMED_OUT" = "Сервер не отвечает";
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";
+"UNEXPECTED_SERVER_RESPONSE" = "Неверный ответ сервера";
 "UNKNOWN_SERVER_ERROR" = "Неизвестная ошибка сервера";
+"UNKNOWN_ERROR" = "Неизвестная ошибка";
 "INVALID_TOKEN" = "Сервер прислал неправильный токен";

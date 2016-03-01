@@ -8,10 +8,10 @@
 
 import UIKit
 
+typealias WebApiCallback = (data:Json?, error:ApiError?, errorPayload:Json?) -> Void
 
 
-
-class WebApi:NSObject, NSURLSessionDelegate, ApiProtocol {
+class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
     static let shared = WebApi()
     var session: NSURLSession!
     
@@ -42,7 +42,7 @@ class WebApi:NSObject, NSURLSessionDelegate, ApiProtocol {
         }
     }
     
-    func get(url url:String, callback:ApiCallback){
+    func get(url url:String, callback:WebApiCallback){
         let uri = NSURL(string: self.url+url)
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -51,7 +51,7 @@ class WebApi:NSObject, NSURLSessionDelegate, ApiProtocol {
     }
 
     
-    func post(url url:String, payload:Json?, callback:ApiCallback){
+    func post(url url:String, payload:Json?, callback:WebApiCallback){
         let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -65,7 +65,7 @@ class WebApi:NSObject, NSURLSessionDelegate, ApiProtocol {
         send(request: request, callback: callback)
     }
     
-    private func send(request request:NSURLRequest, callback:ApiCallback) {
+    private func send(request request:NSURLRequest, callback:WebApiCallback) {
         let task = session.dataTaskWithRequest(request) {[weak self] data, response, error in
             if self == nil {
                 return

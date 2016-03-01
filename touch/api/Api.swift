@@ -15,6 +15,7 @@ enum ApiError : ErrorType {
     case InvalidUserCredentials
     case UserNotConfirmed
     case InvalidConfirmationCode
+    case UnexpectedServerResponse
     case UnknownServer
     case InvalidJSON
     case Unauthorized
@@ -25,45 +26,84 @@ enum ApiError : ErrorType {
 }
 
 typealias Json = [String:AnyObject]
-typealias ApiCallback = (data:Json?, error:ApiError?, errorPayload:Json?) -> Void
+typealias ApiCallback = (data:Json?, success: Bool, payload: Json?) -> Void
 
-protocol ApiProtocol: class {
-    func get(url url:String, callback:ApiCallback)
-    func post(url url:String, payload:Json?, callback:ApiCallback)
+
+protocol WebApiProtocol: class {
+    func get(url url:String, callback:WebApiCallback)
+    func post(url url:String, payload:Json?, callback:WebApiCallback)
 }
 
-class API: ApiProtocol {
+class API {
     static var shared = API()
-    var delegate:ApiProtocol = WebApi()
+    var delegate:WebApiProtocol = WebApi()
     
     func get(url url:String, callback:ApiCallback) {
-        delegate.get(url: url, callback: callback)
+        delegate.get(url: url) { (data, error, errorPayload) -> Void in
+            if error != nil {
+                API.shared.handleApiError(error!, errorPayload: errorPayload)
+                callback(data: nil, success: false, payload: nil)
+            } else {
+                callback(data: data, success: true, payload: nil)
+            }
+        }
     }
     
     func post(url url:String, payload:Json?, callback:ApiCallback) {
-        delegate.post(url: url, payload: payload, callback: callback)
+        delegate.post(url: url, payload: payload) { (data, error, errorPayload) -> Void in
+            if error != nil {
+                API.shared.handleApiError(error!, errorPayload: errorPayload)
+                callback(data: nil, success: false, payload: nil)
+            } else {
+                callback(data: data, success: true, payload: nil)
+            }
+        }
     }
     
-    
-    // Displays an alert, prints into consolse and returns true if the error is generic, returns false o/w
-    func alertGenericApiError(error: ApiError, errorPayload: Json?) -> Bool {
+    // Displays an alert and prints error into consolse
+    func handleApiError(error: ApiError, errorPayload: Json?) {
+        var UIMessage :String
         if errorPayload == nil {
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
-            return false
+            UIMessage  = "UNKNOWN_SERVER_ERROR"
+        } else {
+            switch error {
+            case .ServerTimeout:
+                UIMessage  = "REQUEST_TO_SERVER_TIMED_OUT"
+            case .ServerUnreachable:
+                UIMessage  = "CANNOT_NOT_CONNECT_TO_SERVER"
+            case .IphoneNotConnected:
+                UIMessage  = "IPHONE_NOT_CONNECTED_TO_INTERNET"
+            case .UnknownServer:
+                UIMessage  = "UNKNOWN_SERVER_ERROR"
+            case .NotUniqueField:
+                if errorPayload == nil {
+                    UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
+                } else {
+                    let field = errorPayload!["field"] as? String
+                    if field == nil {
+                        UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
+                    } else {
+                        switch field! {
+                        case "email":
+                            UIMessage  = "EMAIL_IS_NOT_UNIQUE"
+                        case "login":
+                            UIMessage  = "LOGIN_IS_NOT_UNIQUE"
+                        case "phone":
+                            UIMessage  = "PHONE_IS_NOT_UNIQUE"
+                        default:
+                            UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
+                        }
+                    }
+                }
+            default:
+                UIMessage  = "UNKNOWN"
+            }
         }
-        switch error {
-        case .ServerTimeout:
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("REQUEST_TO_SERVER_TIMED_OUT", comment: "REQUEST_TO_SERVER_TIMED_OUT"))
-        case .ServerUnreachable:
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("CANNOT_NOT_CONNECT_TO_SERVER", comment: "CANNOT_NOT_CONNECT_TO_SERVER"))
-        case .IphoneNotConnected:
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("IPHONE_NOT_CONNECTED_TO_INTERNET", comment: "IPHONE_NOT_CONNECTED_TO_INTERNET"))
-        case .UnknownServer:
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "ERROR"), message: NSLocalizedString("UNKNOWN_SERVER_ERROR", comment: "UNKNOWN_SERVER_ERROR"))
-        default:
-            return false
-        }
-        print("Error: \(error), payload: \(errorPayload)")
-        return true
+        alertApiError(error, errorPayload: errorPayload, UIMessage : UIMessage )
+    }
+    
+    func alertApiError(error: ApiError, errorPayload: Json?, UIMessage: String) {
+        Utils.shared.alertError(UIMessage )
+        print("Error: \(error), payload: \(errorPayload), UIMessage :\(NSLocalizedString(UIMessage , comment: UIMessage ))")
     }
 }
