@@ -25,3 +25,4 @@
 "UNKNOWN_SERVER_ERROR" = "Unknown server error";
 "UNKNOWN_ERROR" = "Unknown error";
 "INVALID_TOKEN" = "The server issued invalid token";
+"INVALID_CONFIRMATION_CODE" = "Invalid confirmation code";

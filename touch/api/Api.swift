@@ -75,6 +75,8 @@ class API {
                 UIMessage  = "IPHONE_NOT_CONNECTED_TO_INTERNET"
             case .UnknownServer:
                 UIMessage  = "UNKNOWN_SERVER_ERROR"
+            case .InvalidConfirmationCode:
+                UIMessage  = "INVALID_CONFIRMATION_CODE"
             case .NotUniqueField:
                 if errorPayload == nil {
                     UIMessage  = "UNEXPECTED_SERVER_RESPONSE"

@@ -20,8 +20,9 @@ class SignUpController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if AppUser.shared != nil {
+            performSegueWithIdentifier("phoneVerification", sender: self)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +55,9 @@ class SignUpController: UIViewController {
         
     }
     
+    @IBAction func backClicked() {
+        navigationController?.popViewControllerAnimated(true)
+    }
     private func validate() -> String? {
         if nameField.text == nil || nameField.text!.isEmpty  {
             return NSLocalizedString("NAME_FIELD_REQUIRED", comment: "Name field is required")

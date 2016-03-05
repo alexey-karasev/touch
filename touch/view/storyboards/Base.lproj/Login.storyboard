@@ -71,7 +71,7 @@
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up with email" image="Email"/>
                                 <connections>
-                                    <segue destination="dHp-9F-7CA" kind="show" id="A6z-Uh-AHO"/>
+                                    <segue destination="dHp-9F-7CA" kind="show" id="ylU-PL-uCU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEd-ok-Dv8">
@@ -315,6 +315,9 @@
                                 <rect key="frame" x="37" y="377" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Previous"/>
+                                <connections>
+                                    <action selector="backClicked" destination="dHp-9F-7CA" eventType="touchUpInside" id="BkT-4O-X1g"/>
+                                </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="4SP-tg-xY7">
                                 <rect key="frame" x="144" y="45" width="86" height="41"/>
@@ -362,7 +365,7 @@
                         <outlet property="loginField" destination="2UG-iB-zrQ" id="CAd-Hg-OCq"/>
                         <outlet property="nameField" destination="Kfq-UH-BC6" id="8DO-hs-hos"/>
                         <outlet property="passwordField" destination="haj-YR-FD3" id="7q2-Ip-a15"/>
-                        <segue destination="Lzv-ki-4Xk" kind="show" identifier="fromSignUpToPhoneVerification" id="q9H-Lh-ioU"/>
+                        <segue destination="Lzv-ki-4Xk" kind="show" identifier="phoneVerification" id="q9H-Lh-ioU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F1f-o7-odG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -582,11 +585,17 @@
                                 <rect key="frame" x="309" y="378" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Next"/>
+                                <connections>
+                                    <action selector="nextButtonClicked" destination="Lzv-ki-4Xk" eventType="touchUpInside" id="2xN-ve-6T5"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jpy-mO-CVl" userLabel="Back">
                                 <rect key="frame" x="38" y="378" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Previous"/>
+                                <connections>
+                                    <action selector="backClicked:" destination="Lzv-ki-4Xk" eventType="touchUpInside" id="bjU-jU-gLh"/>
+                                </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="dm8-ct-myx">
                                 <rect key="frame" x="144" y="45" width="86" height="41"/>
@@ -652,6 +661,8 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="countryButton" destination="4en-se-GgZ" id="VB2-Th-cfA"/>
+                        <outlet property="phoneTextField" destination="KV6-ef-G4P" id="Uxr-R3-rQx"/>
+                        <segue destination="IoW-Os-3zj" kind="show" identifier="phoneConfirmation" id="PQm-bV-SZS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LqX-ln-kqx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -661,7 +672,7 @@
         <!--PhoneConfirmation-->
         <scene sceneID="mC2-HU-fRQ">
             <objects>
-                <viewController title="PhoneConfirmation" id="IoW-Os-3zj" customClass="PhoneVerificationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="PhoneConfirmation" id="IoW-Os-3zj" customClass="PhoneConfirmationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="br3-xe-DcF"/>
                         <viewControllerLayoutGuide type="bottom" id="KNZ-sS-8B5"/>
@@ -717,11 +728,17 @@
                                 <rect key="frame" x="309" y="378" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Next"/>
+                                <connections>
+                                    <action selector="nextClicked:" destination="IoW-Os-3zj" eventType="touchUpInside" id="ksA-BR-xF3"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5v-A1-45K" userLabel="Back">
                                 <rect key="frame" x="38" y="378" width="29" height="26"/>
                                 <animations/>
                                 <state key="normal" image="Previous"/>
+                                <connections>
+                                    <action selector="backClicked:" destination="IoW-Os-3zj" eventType="touchUpInside" id="neY-M7-45m"/>
+                                </connections>
                             </button>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="Black Logo" translatesAutoresizingMaskIntoConstraints="NO" id="m0X-zq-qqr">
                                 <rect key="frame" x="144" y="45" width="86" height="41"/>
@@ -769,15 +786,19 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="codeField" destination="T7P-Ec-1Uv" id="jOy-Uy-QHc"/>
+                        <segue destination="kzK-zP-h4T" kind="show" identifier="connectContacts" id="1L6-ZK-xO1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NLa-xZ-BEu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2155.5" y="1179.5"/>
         </scene>
-        <!--Contacts-->
+        <!--Connect Contacts-->
         <scene sceneID="Fye-Zg-KS9">
             <objects>
-                <viewController title="Contacts" id="kzK-zP-h4T" customClass="PhoneVerificationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Connect Contacts" id="kzK-zP-h4T" customClass="PhoneVerificationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CZb-Mk-L0l"/>
                         <viewControllerLayoutGuide type="bottom" id="esy-rQ-YVP"/>
@@ -814,6 +835,9 @@
                                 <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="FpU-WQ-CnE" kind="show" id="SxH-OP-1rU"/>
+                                </connections>
                             </button>
                         </subviews>
                         <animations/>
@@ -866,6 +890,9 @@
                                 <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Next"/>
+                                <connections>
+                                    <segue destination="iLk-SR-ksw" kind="show" id="61e-l9-kup"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jay-rE-If8">
                                 <rect key="frame" x="143" y="165" width="89" height="30"/>
