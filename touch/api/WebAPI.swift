@@ -8,27 +8,21 @@
 
 import UIKit
 
-typealias Json = [String:AnyObject]
 
+// This is a concrete implementation for remote API, communicating with restful web service
+class WebAPI:RemoteJsonAPI {
 
-
-class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
-    typealias Callback = (result:() throws -> Json?) -> Void
-    enum Error : ErrorType {
-        case Unauthorized
-        case ServerTimeout
-        case ServerUnreachable
-        case IphoneNotConnected
-        case UnexpectedResponseCode(Int)
-        case UnknownServer(Json)
-        case InvalidJSON(String)
-        case Unknown(String)
+    // Empty class for session delegate. Can be used if advanced functionality will be added.
+    // Passing Web API as a delefate to NSURLSession is a bad idea, as the delegate must implement
+    // NSObject and Swift doesn't allow for multiple inheritance
+    class SessionDelegate: NSObject, NSURLSessionDelegate {
+        
     }
     
-    static let shared = WebApi()
-    
+    static let shared = WebAPI() // singleton instance
     var session: NSURLSession!
-    let url:String
+    var delegate: SessionDelegate!
+    let url:String //This is the URL of the web service
     
     override init() {
         let config = NSBundle.mainBundle().objectForInfoDictionaryKey("Config") as? NSDictionary
@@ -40,7 +34,8 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
             conf.timeoutIntervalForRequest = 1.0;
             conf.timeoutIntervalForResource = 1.0;
         #endif
-        self.session = NSURLSession(configuration: conf, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+        self.delegate = SessionDelegate()
+        self.session = NSURLSession(configuration: conf, delegate: delegate, delegateQueue: NSOperationQueue.mainQueue())
     }
     
     
@@ -55,7 +50,7 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
         }
     }
     
-    func get(url url:String, callback:Callback){
+    override func get(url url:String, callback:Callback){
         let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -64,7 +59,7 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
     }
 
     
-    func post(url url:String, payload:Json?, callback:Callback){
+    override func post(url url:String, payload:Json?, callback:Callback){
         let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -81,7 +76,7 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
             }
             catch {
                 return callback(result: { () -> Json? in
-                    throw Error.InvalidJSON(self.JSONToString(payload))
+                    throw Error.InvalidJSON(self.JSONToString(payload)!)
                 })
             }
         }
@@ -136,6 +131,7 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
         task.resume()
     }
     
+    // Convert NSURLSession Error to Error and alert the error
     private func handleNSURLSessionError (error: NSError) -> Error {
         var result: Error
         switch error.domain {
@@ -151,7 +147,7 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
                 Utils.shared.alertError("IPHONE_NOT_CONNECTED_TO_INTERNET")
                 result = Error.IphoneNotConnected
             case NSURLError.UserCancelledAuthentication:
-                //              Will handle it upper the hierarchy
+                // Propagates Up
                 result = Error.Unauthorized
             default:
                 Utils.shared.alertError("UNKNOWN_WEB_API_ERROR")
@@ -170,14 +166,15 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
             return jsonText as! String
     }
     
-    private func JSONToString(json: Json) -> String {
+    private func JSONToString(json: Json) -> String? {
         do {
             let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
             let jsonText = NSString(data: jsonData,
                 encoding: NSUTF8StringEncoding)
-            return jsonText as! String
+            return jsonText as? String
         } catch let error {
             print("WebApi: JSONToSting: \(error)")
         }
+        return nil
     }
 }

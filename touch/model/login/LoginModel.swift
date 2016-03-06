@@ -11,7 +11,23 @@ import UIKit
 class LoginModel {
     static var shared = LoginModel()
     
-    func signup(name: String, login: String, email: String, password: String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
+    typealias Result = () throws -> String?
+    typealias Callback = (result: Result) -> Void
+    
+    enum Error: ErrorType {
+        // propagates up
+        case EmptyField(String)
+        case NotUniqueField(String)
+        case Unauthorized
+        
+        // already handled by API
+        case APIError(API.Error)
+
+        // internal error
+        case Unknown(String)
+    }
+    
+    func signup(name: String, login: String, email: String, password: String, callback: Callback) {
         let payload: Json = [
             "name": name,
             "login": login,
@@ -19,37 +35,41 @@ class LoginModel {
             "password": password
         ]
         let url = "/users/register"
-        API.shared.post(url: url, payload: payload) { [weak self] (data, success, payload) -> Void in
-            self!.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
+        API.shared.post(url: url, payload: payload) { [weak self] result in
+            self?.extractToken(result, callback: callback)
         }
     }
     
-    func addPhone(phone:String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
-        if let user = AppUser.shared {
-            let payload: Json = [
-                "phone": phone,
-                "token": user.token
-            ]
-            let url = "/users/add_phone"
-            API.shared.post(url: url, payload: payload) { [weak self] (data, success, payload) -> Void in
-                self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
-            }
+    func addPhone(phone:String, callback: Callback) {
+        guard let user = AppUser.shared else {
+            return callback(result: {
+                throw Error.Unauthorized
+            })
         }
-        callback(token: nil, success: false, payload: nil)
+        let payload: Json = [
+            "phone": phone,
+            "token": user.token
+        ]
+        let url = "/users/add_phone"
+        API.shared.post(url: url, payload: payload) {[weak self] result in
+            self?.extractToken(result, callback: callback)
+        }
     }
     
-    func confirm(confirm:String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
-        if let user = AppUser.shared {
-            let payload: Json = [
-                "confirm": confirm,
-                "token": user.token
-            ]
-            let url = "/users/confirm"
-            API.shared.post(url: url, payload: payload) { [weak self] (data, success, payload) -> Void in
-                self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
-            }
+    func confirm(confirm: String, callback:Callback) {
+        guard let user = AppUser.shared else {
+            return callback(result: {
+                throw Error.Unauthorized
+            })
         }
-        callback(token: nil, success: false, payload: nil)
+        let payload: Json = [
+            "confirm": confirm,
+            "token": user.token
+        ]
+        let url = "/users/confirm"
+        API.shared.post(url: url, payload: payload) { [weak self] result in
+            self?.extractToken(result, callback: callback)
+        }
     }
     
     func login(username: String, password: String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
@@ -58,27 +78,74 @@ class LoginModel {
             "password": password
         ]
         let url = "/users/login"
-        API.shared.post(url: url, payload: payload) { [weak self] (data, success, payload) -> Void in
-            self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
+        API.shared.post(url: url, payload: payload) { [weak self] result in
+            self?.extractToken(result, callback: callback)
         }
     }
     
-    private func updateToken(data data: Json?, success:Bool, payload:Json?, url:String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
-        if success {
-            if data == nil {
-                API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil data returned in \(url) on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false, payload: payload)
-                return
+    private func extractToken(result: API.Result, callback:Callback) {
+        do {
+            let data = try result()
+            guard let token=data!["token"] as? String else {
+                return callback(result: {
+                    let message = "Login: Unexpected nil token"
+                    print(message)
+                    throw Error.Unknown(message)
+                })
             }
-            let token = data!["token"] as? String
-            if token == nil {
-                API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil token returned in \(url) on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false, payload: payload)
-                return
+            return callback(result: {
+                return token
+            })
+        } catch let error as API.Error {
+            switch error {
+            case .Unauthorized:
+                return callback(result: {
+                    throw Error.Unauthorized
+                })
+            case .UnknownServer(let json as Json):
+                guard let id = json["id"] as? String else {
+                    return callback(result: {
+                        let message = "Login: Unexpected error id"
+                        print(message)
+                        throw Error.Unknown(message)
+                    })
+                }
+                guard let payload = json["payload"] as? String else {
+                    return callback(result: {
+                        let message = "Login: Unexpected error payload"
+                        print(message)
+                        throw Error.Unknown(message)
+                    })
+                }
+                
+                switch id {
+                case "EMPTY_FIELD":
+                    return callback(result: {
+                        throw Error.EmptyField(payload)
+                    })
+                case "NOT_UNIQUE_FIELD":
+                    return callback(result: {
+                        throw Error.NotUniqueField(payload)
+                    })
+                default:
+                    return callback(result: {
+                        let message = "Login: Unexpected error id"
+                        print(message)
+                        throw Error.Unknown(message)
+                    })
+                }
+            default:
+                return callback(result: {
+                    throw Error.APIError(error)
+                })
             }
-            callback(token: token!, success: true, payload: payload)
-        } else {
-            callback(token: nil, success: false, payload: payload)
+        } catch {
+            return callback(result: {
+                let message = "Login: Unexpected API Error: \(error)"
+                print(message)
+                throw Error.Unknown(message)
+            })
         }
     }
+    
 }

@@ -10,7 +10,7 @@ import UIKit
 
 class SignUpController: UIViewController {
     
-
+    
     
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
@@ -24,27 +24,38 @@ class SignUpController: UIViewController {
             performSegueWithIdentifier("phoneVerification", sender: self)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-
+        
     }
-
+    
     @IBAction func nextClicked(sender: AnyObject) {
-        let validation = validate()
-        if validation != nil {
-            Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation!)
-            return
+        if let validation = validate() {
+            return Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation)
+        }
+        LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { result in
+            do {
+                let data = try result()
+            } catch let error as LoginModel.Error {
+                switch error {
+                case .EmptyField(let field as String):
+                    
+                    return Utils.shared.alertError("")
+                }
+            } catch {
+                return Utils.shared.alertError("UNKNOWN_ERROR")
+            }
         }
         LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self] (token, success, payload) -> Void in
             if success && (token != nil) && (self != nil) {
                 do {
-                   try AppUser.update(token!)
+                    try AppUser.update(token!)
                     self!.performSegueWithIdentifier("fromSignUpToPhoneVerification", sender: self!)
                 }
                 catch {
@@ -75,5 +86,5 @@ class SignUpController: UIViewController {
         }
         return nil
     }
-
+    
 }

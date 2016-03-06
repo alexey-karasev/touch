@@ -9,114 +9,69 @@
 import UIKit
 
 
-
-enum ApiError : ErrorType {
-    case NotUniqueField(String)
-    case EmptyField(String)
-    case NotFound
-    case InvalidUserCredentials
-    case UserNotConfirmed
-    case InvalidConfirmationCode
-    case UnexpectedServerResponse(String)
-    case UnknownServer(String)
-    case InvalidJSON(Json)
-    case Unauthorized
-    case ServerTimeout
-    case ServerUnreachable
-    case IphoneNotConnected
-    case Unknown(String)
-}
-
-typealias ApiCallback = (data:Json?, success: Bool, payload: Hash?) -> Void
-
-
-protocol WebApiProtocol: class {
-    func get(url url:String, callback:WebApiCallback)
-    func post(url url:String, payload:Json?, callback:WebApiCallback)
-}
-
+// This is the basic API interface, can be easily switched to use any RemoteJsonAPI implementation
 class API {
+    enum Error: ErrorType {
+        // propagates up
+        case Unauthorized
+        case UnknownServer(Json)
+        
+        // already handled by Web API
+        case WebApi(WebAPI.Error)
+        
+        // Unexpected internal error
+        case Unknown(String)
+    }
+
+    typealias Result = () throws -> Json?
+    typealias Callback = (result:Result) -> Void
+    
     static var shared = API()
-    var delegate:WebApiProtocol = WebApi()
+    var delegate:RemoteJsonAPI = WebAPI()
+    var currentCallback: Callback?
     
-    func get(url url:String, callback:ApiCallback) {
-        delegate.get(url: url) { (data, error, errorPayload) -> Void in
-            if error != nil {
-                API.shared.handleApiError(error!, errorPayload: errorPayload)
-                let payload: Hash = [
-                    "error": error!,
-                    "errorPayload": errorPayload
-                ]
-                callback(data: nil, success: false, payload: payload)
-            } else {
-                callback(data: data, success: true, payload: nil)
+    func get(url url:String, callback:Callback) {
+        delegate.get(url: url) { [weak self](result) -> Void in
+            if self != nil {
+                self!.processCallback(result, callback: callback)
             }
         }
     }
     
-    func post(url url:String, payload:Json?, callback:ApiCallback) {
-        delegate.post(url: url, payload: payload) { (data, error, errorPayload) -> Void in
-            if error != nil {
-                API.shared.handleApiError(error!, errorPayload: errorPayload)
-                let payload: Hash = [
-                    "error": error!,
-                    "errorPayload": errorPayload
-                ]
-                callback(data: nil, success: false, payload: payload)
-            } else {
-                callback(data: data, success: true, payload: nil)
+    func post(url url:String, payload:Json?, callback:Callback) {
+        delegate.post(url: url, payload: payload) { [weak self] result in
+            if self != nil {
+                self!.processCallback(result, callback: callback)
             }
         }
     }
     
-    // Displays an alert and prints error into consolse
-    func handleApiError(error: ApiError, errorPayload: Json?) {
-        var UIMessage :String
-        if errorPayload == nil {
-            UIMessage  = "UNKNOWN_SERVER_ERROR"
-        } else {
+    private func processCallback(result: RemoteJsonAPI.Result, callback: Callback) {
+        do {
+            let res = try result()
+            callback(result: {
+                return res
+            })
+        } catch let error as RemoteJsonAPI.Error {
             switch error {
-            case .ServerTimeout:
-                UIMessage  = "REQUEST_TO_SERVER_TIMED_OUT"
-            case .ServerUnreachable:
-                UIMessage  = "CANNOT_NOT_CONNECT_TO_SERVER"
-            case .IphoneNotConnected:
-                UIMessage  = "IPHONE_NOT_CONNECTED_TO_INTERNET"
-            case .UnknownServer:
-                UIMessage  = "UNKNOWN_SERVER_ERROR"
-            case .InvalidConfirmationCode:
-                UIMessage  = "INVALID_CONFIRMATION_CODE"
-            case .UserNotConfirmed:
-                UIMessage  = "USER_NOT_CONFIRMED"
-            case .NotUniqueField:
-                if errorPayload == nil {
-                    UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
-                } else {
-                    let field = errorPayload!["field"] as? String
-                    if field == nil {
-                        UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
-                    } else {
-                        switch field! {
-                        case "email":
-                            UIMessage  = "EMAIL_IS_NOT_UNIQUE"
-                        case "login":
-                            UIMessage  = "LOGIN_IS_NOT_UNIQUE"
-                        case "phone":
-                            UIMessage  = "PHONE_IS_NOT_UNIQUE"
-                        default:
-                            UIMessage  = "UNEXPECTED_SERVER_RESPONSE"
-                        }
-                    }
-                }
+            case .Unauthorized:
+                return callback(result: { () -> Json? in
+                    throw Error.Unauthorized
+                })
+            case .UnknownServer(let json):
+                return callback(result: { () -> Json? in
+                    throw Error.UnknownServer(json)
+                })
             default:
-                UIMessage  = "UNKNOWN"
+                return callback(result: { () -> Json? in
+                    throw Error.WebApi(error)
+                })
+                
             }
+        } catch {
+            return callback(result: { () -> Json? in
+                throw Error.Unknown("API: \(error)")
+            })
         }
-        alertApiError(error, errorPayload: errorPayload, UIMessage : UIMessage )
-    }
-    
-    func alertApiError(error: ApiError, errorPayload: Json?, UIMessage: String) {
-        Utils.shared.alertError(UIMessage )
-        print("Error: \(error), payload: \(errorPayload), UIMessage :\(NSLocalizedString(UIMessage , comment: UIMessage ))")
     }
 }

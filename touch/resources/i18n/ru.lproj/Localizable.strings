@@ -3,9 +3,6 @@
 
 "ERROR" = "Ошибка";
 "OK" = "Ок";
-"EMAIL_IS_NOT_UNIQUE" = "Пользователь с таким email уже зарегистрирован";
-"PHONE_IS_NOT_UNIQUE" = "Пользователь с таким номером телефона уже зарегистрирован";
-"LOGIN_IS_NOT_UNIQUE" = "Пользователь с таким логином уже зарегистрирован";
 
 "PASSWORD_FIELD_REQUIRED" = "Пожалуйста, введите пароль";
 "LOGIN_FIELD_REQUIRED" = "Пожалуйста, укажите логин";
@@ -32,3 +29,11 @@
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";
 "UNKNOWN_WEB_API_ERROR" = "Неизвестная ошибка Web API";
 "UNEXPECTED_SERVER_RESPONSE_CODE" = "Неверный код ответа сервера";
+
+//Login Error
+"EMAIL_IS_NOT_UNIQUE" = "Пользователь с таким email уже зарегистрирован";
+"PHONE_IS_NOT_UNIQUE" = "Пользователь с таким номером телефона уже зарегистрирован";
+"LOGIN_IS_NOT_UNIQUE" = "Пользователь с таким логином уже зарегистрирован";
+"EMAIL_IS_EMPTY" = "Поле Email должно быть заполнено";
+"PHONE_IS_EMPTY" = "Поле Номер телефона должно быть заполнено";
+"LOGIN_IS_EMPTY" = "Поле Имя пользователя должно быть заполнено";

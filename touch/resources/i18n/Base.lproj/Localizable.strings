@@ -3,9 +3,7 @@
 
 "ERROR" = "Error";
 "OK" = "Ok";
-"EMAIL_IS_NOT_UNIQUE" = "The user with this email already exists";
-"PHONE_IS_NOT_UNIQUE" = "The user with this phone already exists";
-"LOGIN_IS_NOT_UNIQUE" = "The user with this login already exists";
+
 
 "PASSWORD_FIELD_REQUIRED" = "Password field is required";
 "LOGIN_FIELD_REQUIRED" = "Login field is required";
@@ -32,3 +30,11 @@
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone is not connected to internet";
 "UNKNOWN_WEB_API_ERROR" = "Unknown Web API Error";
 "UNEXPECTED_SERVER_RESPONSE_CODE" = "Unexpected server reponse code";
+
+//Login Error
+"EMAIL_IS_NOT_UNIQUE" = "The user with this email already exists";
+"PHONE_IS_NOT_UNIQUE" = "The user with this phone already exists";
+"LOGIN_IS_NOT_UNIQUE" = "The user with this login already exists";
+"EMAIL_IS_EMPTY" = "The email field is empty";
+"PHONE_IS_EMPTY" = "The phone field is empty";
+"LOGIN_IS_EMPTY" = "The login field is empty";
