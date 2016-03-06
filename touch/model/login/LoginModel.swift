@@ -11,7 +11,7 @@ import UIKit
 class LoginModel {
     static var shared = LoginModel()
     
-    func signup(name: String, login: String, email: String, password: String, callback:(token:String?, success: Bool) -> Void) {
+    func signup(name: String, login: String, email: String, password: String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
         let payload: Json = [
             "name": name,
             "login": login,
@@ -24,7 +24,7 @@ class LoginModel {
         }
     }
     
-    func addPhone(phone:String, callback:(token:String?, success: Bool) -> Void) {
+    func addPhone(phone:String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
         if let user = AppUser.shared {
             let payload: Json = [
                 "phone": phone,
@@ -35,10 +35,10 @@ class LoginModel {
                 self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
             }
         }
-        callback(token: nil, success: false)
+        callback(token: nil, success: false, payload: nil)
     }
     
-    func confirm(confirm:String, callback:(token:String?, success: Bool) -> Void) {
+    func confirm(confirm:String, callback:(token:String?, success: Bool, payload:Json?) -> Void) {
         if let user = AppUser.shared {
             let payload: Json = [
                 "confirm": confirm,
@@ -49,29 +49,36 @@ class LoginModel {
                 self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
             }
         }
-        callback(token: nil, success: false)
+        callback(token: nil, success: false, payload: nil)
     }
     
-    func login() {
-        
+    func login(username: String, password: String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
+        let payload: Json = [
+            "username": username,
+            "password": password
+        ]
+        let url = "/users/login"
+        API.shared.post(url: url, payload: payload) { [weak self] (data, success, payload) -> Void in
+            self?.updateToken(data: data, success: success, payload: payload, url: url, callback: callback)
+        }
     }
     
-    private func updateToken(data data: Json?, success:Bool, payload:Json?, url:String, callback:(token:String?, success: Bool) -> Void) {
+    private func updateToken(data data: Json?, success:Bool, payload:Json?, url:String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
         if success {
             if data == nil {
                 API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil data returned in \(url) on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false)
+                callback(token: nil, success: false, payload: payload)
                 return
             }
             let token = data!["token"] as? String
             if token == nil {
                 API.shared.alertApiError(ApiError.UnknownServer, errorPayload: ["message": "nil token returned in \(url) on success"], UIMessage: "UNKNOWN_SERVER_ERROR")
-                callback(token: nil, success: false)
+                callback(token: nil, success: false, payload: payload)
                 return
             }
-            callback(token: token!, success: true)
+            callback(token: token!, success: true, payload: payload)
         } else {
-            callback(token: nil, success: false)
+            callback(token: nil, success: false, payload: payload)
         }
     }
 }

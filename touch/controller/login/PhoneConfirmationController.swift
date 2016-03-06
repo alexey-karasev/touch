@@ -20,7 +20,7 @@ class PhoneConfirmationController: UIViewController {
             Utils.shared.alertError("VERIFICATION_FIELD_REQUIRED")
             return
         }
-        LoginModel.shared.confirm(codeField.text!) { [weak self] (token, success) -> Void in
+        LoginModel.shared.confirm(codeField.text!) { [weak self] (token, success, payload) -> Void in
             if success && (token != nil) && (self != nil) {
                 do {
                     try AppUser.update(token!)

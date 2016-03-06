@@ -17,7 +17,7 @@ class PhoneVerificationController: UIViewController, CountryPickerDelegate {
             Utils.shared.alertError("PHONE_FIELD_REQUIRED")
             return
         }
-        LoginModel.shared.addPhone(phoneTextField.text!) { [weak self] (token, success) -> Void in
+        LoginModel.shared.addPhone(phoneTextField.text!) { [weak self] (token, success, payload) -> Void in
             if success && (token != nil) && (self != nil) {
                 do {
                     try AppUser.update(token!)

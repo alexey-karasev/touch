@@ -8,25 +8,26 @@
 
 import UIKit
 
+
+
 enum ApiError : ErrorType {
-    case NotUniqueField
-    case EmptyField
+    case NotUniqueField(String)
+    case EmptyField(String)
     case NotFound
     case InvalidUserCredentials
     case UserNotConfirmed
     case InvalidConfirmationCode
-    case UnexpectedServerResponse
-    case UnknownServer
-    case InvalidJSON
+    case UnexpectedServerResponse(String)
+    case UnknownServer(String)
+    case InvalidJSON(Json)
     case Unauthorized
     case ServerTimeout
     case ServerUnreachable
     case IphoneNotConnected
-    case Unknown
+    case Unknown(String)
 }
 
-typealias Json = [String:AnyObject]
-typealias ApiCallback = (data:Json?, success: Bool, payload: Json?) -> Void
+typealias ApiCallback = (data:Json?, success: Bool, payload: Hash?) -> Void
 
 
 protocol WebApiProtocol: class {
@@ -42,7 +43,11 @@ class API {
         delegate.get(url: url) { (data, error, errorPayload) -> Void in
             if error != nil {
                 API.shared.handleApiError(error!, errorPayload: errorPayload)
-                callback(data: nil, success: false, payload: nil)
+                let payload: Hash = [
+                    "error": error!,
+                    "errorPayload": errorPayload
+                ]
+                callback(data: nil, success: false, payload: payload)
             } else {
                 callback(data: data, success: true, payload: nil)
             }
@@ -53,7 +58,11 @@ class API {
         delegate.post(url: url, payload: payload) { (data, error, errorPayload) -> Void in
             if error != nil {
                 API.shared.handleApiError(error!, errorPayload: errorPayload)
-                callback(data: nil, success: false, payload: nil)
+                let payload: Hash = [
+                    "error": error!,
+                    "errorPayload": errorPayload
+                ]
+                callback(data: nil, success: false, payload: payload)
             } else {
                 callback(data: data, success: true, payload: nil)
             }
@@ -77,6 +86,8 @@ class API {
                 UIMessage  = "UNKNOWN_SERVER_ERROR"
             case .InvalidConfirmationCode:
                 UIMessage  = "INVALID_CONFIRMATION_CODE"
+            case .UserNotConfirmed:
+                UIMessage  = "USER_NOT_CONFIRMED"
             case .NotUniqueField:
                 if errorPayload == nil {
                     UIMessage  = "UNEXPECTED_SERVER_RESPONSE"

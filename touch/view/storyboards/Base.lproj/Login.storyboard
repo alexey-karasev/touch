@@ -482,6 +482,8 @@
                         <outlet property="emailField" destination="crR-yO-0cO" id="faD-E9-Bse"/>
                         <outlet property="next" destination="guJ-Az-qPy" id="2ES-0q-eF3"/>
                         <outlet property="passwordField" destination="O4S-WG-agu" id="xst-4Z-6R6"/>
+                        <segue destination="eT5-Uc-X5T" kind="custom" id="BJ8-p9-7Pn"/>
+                        <segue destination="dHp-9F-7CA" kind="show" identifier="signup" id="0Rq-Yh-pN5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tok-E9-b69" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1017,6 +1019,14 @@
             </objects>
             <point key="canvasLocation" x="3473.5" y="1179.5"/>
         </scene>
+        <!--Main Storyboard-->
+        <scene sceneID="AN4-Ip-eQO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="rootController" id="eT5-Uc-X5T" userLabel="Main Storyboard" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j3D-Td-HXj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2120.5" y="391"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Black Logo" width="86" height="41"/>
@@ -1031,4 +1041,7 @@
         <image name="US" width="25" height="18"/>
         <image name="Underline" width="601" height="89"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="0Rq-Yh-pN5"/>
+    </inferredMetricsTieBreakers>
 </document>

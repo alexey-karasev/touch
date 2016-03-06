@@ -8,13 +8,26 @@
 
 import UIKit
 
-typealias WebApiCallback = (data:Json?, error:ApiError?, errorPayload:Json?) -> Void
+typealias Json = [String:AnyObject]
+
 
 
 class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
-    static let shared = WebApi()
-    var session: NSURLSession!
+    typealias Callback = (result:() throws -> Json?) -> Void
+    enum Error : ErrorType {
+        case Unauthorized
+        case ServerTimeout
+        case ServerUnreachable
+        case IphoneNotConnected
+        case UnexpectedResponseCode(Int)
+        case UnknownServer(Json)
+        case InvalidJSON(String)
+        case Unknown(String)
+    }
     
+    static let shared = WebApi()
+    
+    var session: NSURLSession!
     let url:String
     
     override init() {
@@ -42,8 +55,8 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
         }
     }
     
-    func get(url url:String, callback:WebApiCallback){
-        let uri = NSURL(string: self.url+url)
+    func get(url url:String, callback:Callback){
+        let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.HTTPMethod = "GET"
@@ -51,120 +64,120 @@ class WebApi:NSObject, NSURLSessionDelegate, WebApiProtocol {
     }
 
     
-    func post(url url:String, payload:Json?, callback:WebApiCallback){
+    func post(url url:String, payload:Json?, callback:Callback){
         let uri = NSURL(string: self.url+url+"/")
         let request = NSMutableURLRequest(URL: uri!)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.HTTPMethod = "POST"
-        if payload != nil {
-            if let data = try? NSJSONSerialization.dataWithJSONObject(payload!, options: []) {
+        if payload == nil {
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject([:], options: [])
+        }
+        else {
+            let payload = payload!
+            do {
+                let data = try NSJSONSerialization.dataWithJSONObject(payload, options: [])
                 request.HTTPBody = data
+            }
+            catch {
+                return callback(result: { () -> Json? in
+                    throw Error.InvalidJSON(self.JSONToString(payload))
+                })
             }
         }
         send(request: request, callback: callback)
     }
     
-    private func send(request request:NSURLRequest, callback:WebApiCallback) {
+    private func send(request request:NSURLRequest, callback:Callback) {
         let task = session.dataTaskWithRequest(request) {[weak self] data, response, error in
             if self == nil {
-                return
+                return callback(result: {
+                    throw Error.Unknown("WebApi: send: Self unexpectedly ceased to exist")
+                })
             }
-            if (error != nil) {
-                let apiError = self!.errorToApiError(error!)
-                callback(data: nil, error:apiError.error, errorPayload:apiError.payload)
-                return
+            if let URLSessionError = error {
+                let err = self!.handleNSURLSessionError(URLSessionError)
+                return callback(result: { () -> Json? in
+                    throw err
+                })
             }
-            let httpResp = response as? NSHTTPURLResponse
-            if httpResp == nil {
-                callback(data: nil, error: ApiError.Unknown, errorPayload: ["description":"Failed to downcast URLResponse: \(httpResp)"])
-                return
+            guard let data = data else {
+                return callback(result: {
+                    return [:]
+                })
             }
-            var dict:Json?
-            if data != nil && data!.length > 0 {
-                let obj = try? NSJSONSerialization.JSONObjectWithData(data!, options: [])
-                if obj == nil {
-                    callback(data: nil, error: ApiError.InvalidJSON, errorPayload: ["description":"Failed to cast data from reponse to JSON: \(data!)"])
-                    return
-                }
-                dict = obj! as? Json
-                if dict == nil {
-                    callback(data: nil, error: ApiError.InvalidJSON, errorPayload: ["description":"Failed to cast data from reponse to JSON: \(data!)"])
-                    return
-                }
-                if (httpResp!.statusCode != 200) {
-                    let apiError = self!.reponseToApiError(dict!)
-                    callback(data: nil, error:apiError.error, errorPayload:apiError.payload)
-                    return
-                }
+            guard data.length > 0 else {
+                return callback(result: {
+                    return [:]
+                })
             }
-            callback(data: dict, error: nil, errorPayload: nil)
+            guard let nsJSON = try? NSJSONSerialization.JSONObjectWithData(data, options: []) else {
+                return callback(result: {
+                    throw Error.InvalidJSON(self!.NSDataToString(data))
+                })
+            }
+            guard let json = nsJSON as? Json else {
+                return callback(result: {
+                    throw Error.InvalidJSON(self!.NSDataToString(data))
+                })
+            }
+            let httpResp = response as! NSHTTPURLResponse
+            if (httpResp.statusCode != 200) {
+                Utils.shared.alertError("UNEXPECTED_SERVER_REPONSE_CODE")
+                return callback(result: {
+                    throw Error.UnexpectedResponseCode(httpResp.statusCode)
+                })
+            }
+            
+            callback(result: {
+                return json
+            })
         }
         task.resume()
     }
     
-    private func errorToApiError(err: NSError) -> (error: ApiError, payload: Json?) {
-        switch err.domain {
+    private func handleNSURLSessionError (error: NSError) -> Error {
+        var result: Error
+        switch error.domain {
         case NSURLErrorDomain:
-            switch NSURLError(rawValue: err.code)! {
+            switch NSURLError(rawValue: error.code)! {
             case NSURLError.TimedOut:
-                return (ApiError.ServerTimeout, nil)
+                Utils.shared.alertError("REQUEST_TO_SERVER_TIMED_OUT")
+                result = Error.ServerTimeout
             case NSURLError.CannotConnectToHost:
-                return (ApiError.ServerUnreachable, nil)
+                Utils.shared.alertError("CANNOT_NOT_CONNECT_TO_SERVER")
+                result = Error.ServerUnreachable
             case NSURLError.NotConnectedToInternet:
-                return (ApiError.IphoneNotConnected, nil)
+                Utils.shared.alertError("IPHONE_NOT_CONNECTED_TO_INTERNET")
+                result = Error.IphoneNotConnected
             case NSURLError.UserCancelledAuthentication:
-                return (ApiError.Unauthorized, nil)
-            default: break
+                //              Will handle it upper the hierarchy
+                result = Error.Unauthorized
+            default:
+                Utils.shared.alertError("UNKNOWN_WEB_API_ERROR")
+                result = Error.Unknown("Unknown URL Session Error: \(error.description)")
             }
         default:
-            return (ApiError.Unknown, ["error":err])
+            Utils.shared.alertError("UNKNOWN_WEB_API_ERROR")
+            result = Error.Unknown("Unknown URL Session Error: \(error.description)")
         }
-        return (ApiError.Unknown, ["error":err])
+        return result
     }
     
-    private func reponseToApiError(data: Json?) -> (error: ApiError, payload: Json?) {
-        if let json = data {
-            let error = json["error"] as? Json
-            if error == nil {
-                return (ApiError.InvalidJSON, json)
-            }
-            let id = error!["id"]
-            if id == nil {
-                return (ApiError.InvalidJSON, json)
-            }
-            let strId = id as? String
-            if strId == nil {
-                return (ApiError.InvalidJSON, json)
-            }
-            let payload = error!["payload"]
-            if payload == nil {
-                return (ApiError.InvalidJSON, json)
-            }
-            let jsonPayload = payload! as? Json
-            if jsonPayload == nil {
-                return (ApiError.InvalidJSON, json)
-            }
-            
-            switch strId! {
-            case "NOT_UNIQUE_FIELD":
-                return (ApiError.NotUniqueField, jsonPayload)
-            case "EMPTY_FIELD":
-                return (ApiError.EmptyField, jsonPayload)
-            case "NOT_FOUND":
-                return (ApiError.NotFound, jsonPayload)
-            case "INVALID_USER_CREDENTIALS":
-                return (ApiError.InvalidUserCredentials, jsonPayload)
-            case "USER_NOT_CONFIRMED":
-                return (ApiError.UserNotConfirmed, jsonPayload)
-            case "INVALID_CONFIRMATION_CODE":
-                return (ApiError.InvalidConfirmationCode, jsonPayload)
-            case "UNKNOWN":
-                return (ApiError.UnknownServer, jsonPayload)
-            default:
-                return (ApiError.UnknownServer, jsonPayload)
-            }
+    private func NSDataToString(data: NSData) -> String {
+            let jsonText = NSString(data: data,
+                encoding: NSUTF8StringEncoding)
+            return jsonText as! String
+    }
+    
+    private func JSONToString(json: Json) -> String {
+        do {
+            let jsonData = try NSJSONSerialization.dataWithJSONObject(json, options: NSJSONWritingOptions.PrettyPrinted)
+            let jsonText = NSString(data: jsonData,
+                encoding: NSUTF8StringEncoding)
+            return jsonText as! String
+        } catch let error {
+            print("WebApi: JSONToSting: \(error)")
         }
-        return (ApiError.UnknownServer, nil)
     }
 }
