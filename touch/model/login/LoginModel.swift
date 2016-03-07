@@ -31,7 +31,7 @@ class LoginModel {
         ])
         let url = "/users/register"
         API.shared.post(url: url, payload: payload) { [weak self] result in
-            self?.extractToken(result, callback: callback)
+            self?.extractResult(result, callback: callback)
         }
     }
     
@@ -47,7 +47,7 @@ class LoginModel {
         ])
         let url = "/users/add_phone"
         API.shared.post(url: url, payload: payload) {[weak self] result in
-            self?.extractToken(result, callback: callback)
+            self?.extractResult(result, callback: callback)
         }
     }
     
@@ -63,29 +63,27 @@ class LoginModel {
         ])
         let url = "/users/confirm"
         API.shared.post(url: url, payload: payload) { [weak self] result in
-            self?.extractToken(result, callback: callback)
+            self?.extractResult(result, callback: callback)
         }
     }
     
-    func login(username: String, password: String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
+    func login(username: String, password: String, callback:Callback) {
         let payload = Json(dictionary: [
             "username": username,
             "password": password
         ])
         let url = "/users/login"
         API.shared.post(url: url, payload: payload) { [weak self] result in
-            self?.extractToken(result, callback: callback)
+            self?.extractResult(result, callback: callback)
         }
     }
     
-    private func extractToken(result: API.Result, callback:Callback) {
+    private func extractResult(result: API.Result, callback:Callback) {
         do {
             let data = try result()
             guard let token=data!["token"] as? String else {
                 return callback(result: {
-                    let message = "Login: Unexpected nil token"
-                    print(message)
-                    throw Error.Internal(message)
+                    throw Error.Internal("Unexpected nil token")
                 })
             }
             return callback(result: {
@@ -99,21 +97,15 @@ class LoginModel {
                 })
             case .InternalServer(let json):
                 guard let id = json["id"] as? String else {
-                    
                     return callback(result: {
-                        let message = "Login: Unexpected error id"
-                        print(message)
-                        throw Error.Internal(message)
+                        throw Error.Internal("Invalid error id")
                     })
                 }
                 guard let payload = json["payload"] as? String else {
                     return callback(result: {
-                        let message = "Login: Unexpected error payload"
-                        print(message)
-                        throw Error.Internal(message)
+                        throw Error.Internal("Invalid error payload")
                     })
                 }
-                
                 switch id {
                 case "EMPTY_FIELD":
                     return callback(result: {
@@ -125,21 +117,22 @@ class LoginModel {
                     })
                 default:
                     return callback(result: {
-                        let message = "Login: Unexpected error id"
-                        print(message)
-                        throw Error.Unknown(message)
+                        throw Error.Internal("Unexpected error id")
                     })
                 }
-            default:
+            case .WebApi:
+                return callback(result: {
+                    throw Error.APIError(error)
+                })
+            case .Internal(let data):
+                Utils.Text.log("Internal API Error, payload: \(data)")
                 return callback(result: {
                     throw Error.APIError(error)
                 })
             }
         } catch {
             return callback(result: {
-                let message = "Login: Unexpected API Error: \(error)"
-                print(message)
-                throw Error.Unknown(message)
+                throw Error.Internal("Unexpected API Error: \(error)")
             })
         }
     }

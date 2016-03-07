@@ -14,19 +14,41 @@ class PhoneVerificationController: UIViewController, CountryPickerDelegate {
     
     @IBAction func nextButtonClicked() {
         if (phoneTextField.text == nil) || (phoneTextField.text == "") {
-            Utils.shared.alertError("PHONE_FIELD_REQUIRED")
+            Utils.Text.alertError("PHONE_IS_EMPTY")
             return
         }
-        LoginModel.shared.addPhone(phoneTextField.text!) { [weak self] (token, success, payload) -> Void in
-            if success && (token != nil) && (self != nil) {
-                do {
-                    try AppUser.update(token!)
-                    self!.performSegueWithIdentifier("phoneConfirmation", sender: self!)
+        LoginModel.shared.addPhone(currentCountry!.code+phoneTextField.text!) { [weak self] result in
+            
+            var token: String?
+            do {
+                token = try result()
+            } catch let error as LoginModel.Error {
+                switch error {
+                case .EmptyField(let field):
+                    return Utils.Text.alertError("\(field.uppercaseString)_IS_EMPTY")
+                case .NotUniqueField(let field):
+                    return Utils.Text.alertError("\(field.uppercaseString)_IS_NOT_UNIQUE")
+                case .Unauthorized:
+                    Utils.Text.log("Error: Phone Verification Controller: On sign up server returned unauthorized")
+                    return Utils.Text.alertError("UNKNOWN_SERVER_ERROR")
+                case .APIError:
+                    return
+                case .Internal(let data):
+                    Utils.Text.log("Error: Phone Verification Controller: Login Model: Internal Error, payload: \(data)")
                 }
-                catch {
-                    Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: NSLocalizedString("INVALID_TOKEN", comment: "INVALID_TOKEN"))
-                }
+            } catch {
+                Utils.Text.log("Error: Phone Verification Controller: Unexpected error: \(error)")
+                return Utils.Text.alertError("UNKNOWN_ERROR")
             }
+            
+            do {
+                try AppUser.update(token!)
+            }
+            catch {
+                Utils.Text.alertError("INVALID_TOKEN")
+                Utils.Text.log("Error: Phone Verification Controller: Invalid token")
+            }
+            self?.performSegueWithIdentifier("phoneConfirmation", sender: self!)
         }
     }
     
@@ -71,6 +93,7 @@ class PhoneVerificationController: UIViewController, CountryPickerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentCountry = countries[0]
     }
     
     override func didReceiveMemoryWarning() {

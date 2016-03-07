@@ -70,9 +70,9 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
     // top - top of the Country picker (0 = fullscreen)
     // currentCountry - used to highlight selected country cell
     func present(target: UIViewController, top:CGFloat, currentCountry: Country?) {
-        Utils.shared.addOverlayToView(target.view)
+        Utils.UI.addOverlayToView(target.view)
         overlayTap = UITapGestureRecognizer(target: self, action: Selector("overlayTapped:"))
-        Utils.shared.overlay!.addGestureRecognizer(overlayTap)
+        Utils.UI.overlay!.addGestureRecognizer(overlayTap)
         target.addChildViewController(self)
         view.frame = CGRectMake(target.view.frame.origin.x, target.view.frame.height, target.view.frame.width, target.view.frame.height)
         target.view.addSubview(view)
@@ -91,7 +91,7 @@ class CountryPickerController: UIViewController, UITableViewDelegate, UITableVie
         if let d = delegate {
             d.countryPickerDismissed(country)
         }
-        Utils.shared.dismissOverlay()
+        Utils.UI.dismissOverlay()
         UIView.animateWithDuration(0.5, animations: { [weak self] in
             if self != nil {
                 self!.view.frame =  CGRectMake(self!.target!.view.frame.origin.x, self!.target!.view.frame.height, self!.target!.view.frame.width, self!.target!.view.frame.height)

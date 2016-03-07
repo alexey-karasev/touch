@@ -27,7 +27,7 @@ class API {
     func get(url url:String, callback:Callback) {
         delegate.get(url: url) { [weak self](result) -> Void in
             if self != nil {
-                self!.processCallback(result, callback: callback)
+                self!.extractResult(result, callback: callback)
             }
         }
     }
@@ -35,12 +35,12 @@ class API {
     func post(url url:String, payload:Json?, callback:Callback) {
         delegate.post(url: url, payload: payload) { [weak self] result in
             if self != nil {
-                self!.processCallback(result, callback: callback)
+                self!.extractResult(result, callback: callback)
             }
         }
     }
     
-    private func processCallback(result: RemoteJsonAPI.Result, callback: Callback) {
+    private func extractResult(result: RemoteJsonAPI.Result, callback: Callback) {
         do {
             let res = try result()
             callback(result: {
@@ -57,27 +57,27 @@ class API {
                     throw Error.InternalServer(json)
                 })
             case .IphoneNotConnected:
-                alertError("IPHONE_NOT_CONNECTED", error: error, payload: nil)
+                alertError("IPHONE_NOT_CONNECTED", payload: nil)
                 return callback(result: {
                     throw Error.WebApi(error)
                 })
             case .ServerTimeout:
-                alertError("REQUEST_TO_SERVER_TIMED_OUT", error: error, payload: nil)
+                alertError("REQUEST_TO_SERVER_TIMED_OUT", payload: nil)
                 return callback(result: {
                     throw Error.WebApi(error)
                 })
             case .ServerUnreachable:
-                alertError("CANNOT_NOT_CONNECT_TO_SERVER", error: error, payload: nil)
+                alertError("CANNOT_NOT_CONNECT_TO_SERVER", payload: nil)
                 return callback(result: {
                     throw Error.WebApi(error)
                 })
             case .InvalidServerResponse(let data):
-                alertError("UNEXPECTED_SERVER_RESPONSE", error: error, payload: data)
+                alertError("UNEXPECTED_SERVER_RESPONSE", payload: data)
                 return callback(result: {
                     throw Error.WebApi(error)
                 })
             case .Internal(let data):
-                alertError("UNKNOWN_ERROR", error: error, payload: data)
+                alertError("UNKNOWN_ERROR", payload: data)
                 return callback(result: {
                     throw Error.WebApi(error)
                 })
@@ -89,12 +89,12 @@ class API {
         }
     }
     
-    private func alertError(messageID:String, error:RemoteJsonAPI.Error, payload:String?) {
+    private func alertError(messageID:String, payload:String?) {
         Utils.Text.alertError(messageID)
         if payload == nil  {
-            Utils.Text.log("API: \(error)")
+            Utils.Text.log("Error: API: \(messageID)")
         } else {
-            Utils.Text.log("API: \(error), payload: \(payload)")
+            Utils.Text.log("Error: API: \(messageID), payload: \(payload)")
         }
     }
 }

@@ -37,31 +37,39 @@ class SignUpController: UIViewController {
     
     @IBAction func nextClicked(sender: AnyObject) {
         if let validation = validate() {
-            return Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation)
+            return Utils.Text.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: validation)
         }
-        LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { result in
+        LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self]result in
+            var token: String?
             do {
-                let data = try result()
+                token = try result()
             } catch let error as LoginModel.Error {
                 switch error {
-                case .EmptyField(let field as String):
-                    
-                    return Utils.shared.alertError("")
+                case .EmptyField(let field):
+                    return Utils.Text.alertError("\(field.uppercaseString)_IS_EMPTY")
+                case .NotUniqueField(let field):
+                    return Utils.Text.alertError("\(field.uppercaseString)_IS_NOT_UNIQUE")
+                case .Unauthorized:
+                    Utils.Text.log("Error: Sign Up Controller: On sign up server returned unauthorized")
+                    return Utils.Text.alertError("UNKNOWN_SERVER_ERROR")
+                case .APIError:
+                    return
+                case .Internal(let data):
+                    Utils.Text.log("Error: Sign Up Controller: Login Model: Internal Error, payload: \(data)")
                 }
             } catch {
-                return Utils.shared.alertError("UNKNOWN_ERROR")
+                Utils.Text.log("Error: Sign Up Controller: Unexpected error: \(error)")
+                return Utils.Text.alertError("UNKNOWN_ERROR")
             }
-        }
-        LoginModel.shared.signup(nameField.text!, login: loginField.text!, email: emailField.text!, password: passwordField.text!) { [weak self] (token, success, payload) -> Void in
-            if success && (token != nil) && (self != nil) {
-                do {
-                    try AppUser.update(token!)
-                    self!.performSegueWithIdentifier("fromSignUpToPhoneVerification", sender: self!)
-                }
-                catch {
-                    Utils.shared.alert(header: NSLocalizedString("ERROR", comment: "Error"), message: NSLocalizedString("INVALID_TOKEN", comment: "INVALID_TOKEN"))
-                }
+            
+            do {
+                try AppUser.update(token!)
             }
+            catch {
+                Utils.Text.alertError("INVALID_TOKEN")
+                Utils.Text.log("Error: Sign Up Controller: Invalid token")
+            }
+            self?.performSegueWithIdentifier("phoneVerification", sender: self!)
         }
         
     }
@@ -69,6 +77,7 @@ class SignUpController: UIViewController {
     @IBAction func backClicked() {
         navigationController?.popViewControllerAnimated(true)
     }
+    
     private func validate() -> String? {
         if nameField.text == nil || nameField.text!.isEmpty  {
             return NSLocalizedString("NAME_FIELD_REQUIRED", comment: "Name field is required")
