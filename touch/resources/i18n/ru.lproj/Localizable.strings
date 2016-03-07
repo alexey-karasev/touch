@@ -28,7 +28,7 @@
 "REQUEST_TO_SERVER_TIMED_OUT" = "Сервер не отвечает";
 "IPHONE_NOT_CONNECTED_TO_INTERNET" = "Iphone не подключен к интернету";
 "UNKNOWN_WEB_API_ERROR" = "Неизвестная ошибка Web API";
-"UNEXPECTED_SERVER_RESPONSE_CODE" = "Неверный код ответа сервера";
+"UNEXPECTED_SERVER_RESPONSE" = "Неверный формат ответа сервера";
 
 //Login Error
 "EMAIL_IS_NOT_UNIQUE" = "Пользователь с таким email уже зарегистрирован";

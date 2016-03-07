@@ -32,6 +32,9 @@
 		FA3F5B701C855BD500B7180A /* CountryPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B6F1C855BD500B7180A /* CountryPickerViewCell.swift */; settings = {ASSET_TAGS = (); }; };
 		FA3F5B721C855BE200B7180A /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B711C855BE200B7180A /* AppUser.swift */; settings = {ASSET_TAGS = (); }; };
 		FA3F5B751C855C0400B7180A /* touch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA3F5B731C855C0400B7180A /* touch.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
+		FA50216F1C8D8C420095589F /* TextUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50216E1C8D8C420095589F /* TextUtils.swift */; settings = {ASSET_TAGS = (); }; };
+		FA5021711C8D8D1C0095589F /* UIUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5021701C8D8D1C0095589F /* UIUtils.swift */; settings = {ASSET_TAGS = (); }; };
+		FA5021731C8E07D90095589F /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5021721C8E07D90095589F /* Json.swift */; settings = {ASSET_TAGS = (); }; };
 		FA8DF7241C8B78C90048DE4D /* PhoneConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA8DF7261C8C8E950048DE4D /* RemoteJsonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
@@ -91,6 +94,9 @@
 		FA3F5B711C855BE200B7180A /* AppUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUser.swift; path = model/AppUser.swift; sourceTree = "<group>"; };
 		FA3F5B741C855C0400B7180A /* touch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = touch.xcdatamodel; sourceTree = "<group>"; };
 		FA3F5B781C855CBF00B7180A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA50216E1C8D8C420095589F /* TextUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextUtils.swift; path = utils/TextUtils.swift; sourceTree = "<group>"; };
+		FA5021701C8D8D1C0095589F /* UIUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIUtils.swift; path = utils/UIUtils.swift; sourceTree = "<group>"; };
+		FA5021721C8E07D90095589F /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Json.swift; path = api/Json.swift; sourceTree = "<group>"; };
 		FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneConfirmationController.swift; path = controller/login/PhoneConfirmationController.swift; sourceTree = "<group>"; };
 		FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteJsonAPI.swift; path = api/RemoteJsonAPI.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				FA0847881C7C62CE0058FB57 /* Utils.swift */,
+				FA50216E1C8D8C420095589F /* TextUtils.swift */,
+				FA5021701C8D8D1C0095589F /* UIUtils.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -323,6 +331,7 @@
 				FA3F5B2B1C855A8900B7180A /* Api.swift */,
 				FA3F5B2C1C855A8900B7180A /* WebAPI.swift */,
 				FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */,
+				FA5021721C8E07D90095589F /* Json.swift */,
 			);
 			name = api;
 			sourceTree = "<group>";
@@ -582,12 +591,15 @@
 				FA3F5B721C855BE200B7180A /* AppUser.swift in Sources */,
 				FA3F5B361C855AC700B7180A /* LoginController.swift in Sources */,
 				FA3F5B3A1C855ACF00B7180A /* CountryPickerController.swift in Sources */,
+				FA5021711C8D8D1C0095589F /* UIUtils.swift in Sources */,
 				FA3F5B2D1C855A8900B7180A /* Api.swift in Sources */,
 				FA0847891C7C62CE0058FB57 /* Utils.swift in Sources */,
 				FA8DF7261C8C8E950048DE4D /* RemoteJsonAPI.swift in Sources */,
+				FA50216F1C8D8C420095589F /* TextUtils.swift in Sources */,
 				FA3F5B751C855C0400B7180A /* touch.xcdatamodeld in Sources */,
 				FA8DF7241C8B78C90048DE4D /* PhoneConfirmationController.swift in Sources */,
 				FA3F5B381C855AC700B7180A /* SignUpController.swift in Sources */,
+				FA5021731C8E07D90095589F /* Json.swift in Sources */,
 				FA3F5B2E1C855A8900B7180A /* WebAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

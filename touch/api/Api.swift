@@ -12,15 +12,10 @@ import UIKit
 // This is the basic API interface, can be easily switched to use any RemoteJsonAPI implementation
 class API {
     enum Error: ErrorType {
-        // propagates up
         case Unauthorized
-        case UnknownServer(Json)
-        
-        // already handled by Web API
+        case InternalServer(Json)
         case WebApi(WebAPI.Error)
-        
-        // Unexpected internal error
-        case Unknown(String)
+        case Internal(String)
     }
 
     typealias Result = () throws -> Json?
@@ -28,7 +23,6 @@ class API {
     
     static var shared = API()
     var delegate:RemoteJsonAPI = WebAPI()
-    var currentCallback: Callback?
     
     func get(url url:String, callback:Callback) {
         delegate.get(url: url) { [weak self](result) -> Void in
@@ -55,23 +49,52 @@ class API {
         } catch let error as RemoteJsonAPI.Error {
             switch error {
             case .Unauthorized:
-                return callback(result: { () -> Json? in
+                return callback(result: {
                     throw Error.Unauthorized
                 })
-            case .UnknownServer(let json):
-                return callback(result: { () -> Json? in
-                    throw Error.UnknownServer(json)
+            case .InternalServer(let json):
+                return callback(result: {
+                    throw Error.InternalServer(json)
                 })
-            default:
-                return callback(result: { () -> Json? in
+            case .IphoneNotConnected:
+                alertError("IPHONE_NOT_CONNECTED", error: error, payload: nil)
+                return callback(result: {
                     throw Error.WebApi(error)
                 })
-                
+            case .ServerTimeout:
+                alertError("REQUEST_TO_SERVER_TIMED_OUT", error: error, payload: nil)
+                return callback(result: {
+                    throw Error.WebApi(error)
+                })
+            case .ServerUnreachable:
+                alertError("CANNOT_NOT_CONNECT_TO_SERVER", error: error, payload: nil)
+                return callback(result: {
+                    throw Error.WebApi(error)
+                })
+            case .InvalidServerResponse(let data):
+                alertError("UNEXPECTED_SERVER_RESPONSE", error: error, payload: data)
+                return callback(result: {
+                    throw Error.WebApi(error)
+                })
+            case .Internal(let data):
+                alertError("UNKNOWN_ERROR", error: error, payload: data)
+                return callback(result: {
+                    throw Error.WebApi(error)
+                })
             }
         } catch {
-            return callback(result: { () -> Json? in
-                throw Error.Unknown("API: \(error)")
+            return callback(result: {
+                throw Error.Internal("Unexpected Remote Json API error: \(error)")
             })
+        }
+    }
+    
+    private func alertError(messageID:String, error:RemoteJsonAPI.Error, payload:String?) {
+        Utils.Text.alertError(messageID)
+        if payload == nil  {
+            Utils.Text.log("API: \(error)")
+        } else {
+            Utils.Text.log("API: \(error), payload: \(payload)")
         }
     }
 }

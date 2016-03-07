@@ -15,25 +15,20 @@ class LoginModel {
     typealias Callback = (result: Result) -> Void
     
     enum Error: ErrorType {
-        // propagates up
         case EmptyField(String)
         case NotUniqueField(String)
         case Unauthorized
-        
-        // already handled by API
         case APIError(API.Error)
-
-        // internal error
-        case Unknown(String)
+        case Internal(String)
     }
     
     func signup(name: String, login: String, email: String, password: String, callback: Callback) {
-        let payload: Json = [
+        let payload = Json(dictionary: [
             "name": name,
             "login": login,
             "email": email,
             "password": password
-        ]
+        ])
         let url = "/users/register"
         API.shared.post(url: url, payload: payload) { [weak self] result in
             self?.extractToken(result, callback: callback)
@@ -46,10 +41,10 @@ class LoginModel {
                 throw Error.Unauthorized
             })
         }
-        let payload: Json = [
+        let payload = Json(dictionary: [
             "phone": phone,
             "token": user.token
-        ]
+        ])
         let url = "/users/add_phone"
         API.shared.post(url: url, payload: payload) {[weak self] result in
             self?.extractToken(result, callback: callback)
@@ -62,10 +57,10 @@ class LoginModel {
                 throw Error.Unauthorized
             })
         }
-        let payload: Json = [
+        let payload = Json(dictionary: [
             "confirm": confirm,
             "token": user.token
-        ]
+        ])
         let url = "/users/confirm"
         API.shared.post(url: url, payload: payload) { [weak self] result in
             self?.extractToken(result, callback: callback)
@@ -73,10 +68,10 @@ class LoginModel {
     }
     
     func login(username: String, password: String, callback:(token:String?, success: Bool, payload: Json?) -> Void) {
-        let payload: Json = [
+        let payload = Json(dictionary: [
             "username": username,
             "password": password
-        ]
+        ])
         let url = "/users/login"
         API.shared.post(url: url, payload: payload) { [weak self] result in
             self?.extractToken(result, callback: callback)
@@ -90,7 +85,7 @@ class LoginModel {
                 return callback(result: {
                     let message = "Login: Unexpected nil token"
                     print(message)
-                    throw Error.Unknown(message)
+                    throw Error.Internal(message)
                 })
             }
             return callback(result: {
@@ -102,19 +97,20 @@ class LoginModel {
                 return callback(result: {
                     throw Error.Unauthorized
                 })
-            case .UnknownServer(let json as Json):
+            case .InternalServer(let json):
                 guard let id = json["id"] as? String else {
+                    
                     return callback(result: {
                         let message = "Login: Unexpected error id"
                         print(message)
-                        throw Error.Unknown(message)
+                        throw Error.Internal(message)
                     })
                 }
                 guard let payload = json["payload"] as? String else {
                     return callback(result: {
                         let message = "Login: Unexpected error payload"
                         print(message)
-                        throw Error.Unknown(message)
+                        throw Error.Internal(message)
                     })
                 }
                 

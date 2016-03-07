@@ -6,8 +6,6 @@
 //  Copyright © 2016 Алексей Карасев. All rights reserved.
 //
 
-typealias Json = [String:AnyObject]
-
 // This is an abstract class for any json-based remote API
 class RemoteJsonAPI {
     
@@ -23,17 +21,13 @@ class RemoteJsonAPI {
     
     // These are typical errors for communicating with remote JSON API
     enum Error : ErrorType {
-        // Propagates up
         case Unauthorized
-        case UnknownServer(Json)
-        
-        // Handled by RemoteJsonAPI
+        case InternalServer(Json)
+        case InvalidServerResponse(String)
         case ServerTimeout
         case ServerUnreachable
         case IphoneNotConnected
-        case UnexpectedResponseCode(Int)
-        case InvalidJSON(String)
-        case Unknown(String)
+        case Internal(String)
     }
     
     // Get request
