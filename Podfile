@@ -7,6 +7,8 @@ target 'touch' do
     pod 'MagicalRecord'
     pod 'Lockbox'
     pod 'JWTDecode', '~> 1.0'
+    pod 'FBSDKCoreKit'
+    pod 'FBSDKLoginKit'
 end
 
 target 'touchTests' do

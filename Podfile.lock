@@ -1,4 +1,14 @@
 PODS:
+  - Bolts (1.6.0):
+    - Bolts/AppLinks (= 1.6.0)
+    - Bolts/Tasks (= 1.6.0)
+  - Bolts/AppLinks (1.6.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.6.0)
+  - FBSDKCoreKit (4.10.0):
+    - Bolts (~> 1.5)
+  - FBSDKLoginKit (4.10.0):
+    - FBSDKCoreKit
   - JWTDecode (1.0.0)
   - Lockbox (3.0.0)
   - MagicalRecord (2.3.2):
@@ -8,6 +18,8 @@ PODS:
   - Quick (0.9.1)
 
 DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - JWTDecode (~> 1.0)
   - Lockbox
   - MagicalRecord
@@ -15,6 +27,9 @@ DEPENDENCIES:
   - Quick (~> 0.9.0)
 
 SPEC CHECKSUMS:
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  FBSDKCoreKit: 13bec8373fb3af94d44daf2aa1e0958687897fbd
+  FBSDKLoginKit: d3d4a2e9d31954deb00bfea964167a05ca1ea976
   JWTDecode: d172edcb1607cc15aed85d58eceedcbb675a4534
   Lockbox: 3b23507064de0bfcd772f54eddf41064d4152703
   MagicalRecord: 53bed74b4323b930992a725be713e53b37d19755

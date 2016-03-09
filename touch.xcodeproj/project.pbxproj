@@ -38,6 +38,7 @@
 		FA5844AF1C9065890098DD98 /* ProfilePictureController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5844AE1C9065890098DD98 /* ProfilePictureController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA5844B11C906D320098DD98 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5844B01C906D320098DD98 /* Avatar.swift */; settings = {ASSET_TAGS = (); }; };
 		FA5844B31C909E900098DD98 /* ProfileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5844B21C909E900098DD98 /* ProfileButton.swift */; settings = {ASSET_TAGS = (); }; };
+		FA5844B51C90B2040098DD98 /* LoginRootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5844B41C90B2040098DD98 /* LoginRootController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA8DF7241C8B78C90048DE4D /* PhoneConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA8DF7261C8C8E950048DE4D /* RemoteJsonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
@@ -103,6 +104,7 @@
 		FA5844AE1C9065890098DD98 /* ProfilePictureController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureController.swift; sourceTree = "<group>"; };
 		FA5844B01C906D320098DD98 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
 		FA5844B21C909E900098DD98 /* ProfileButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileButton.swift; path = view/shared/ProfileButton.swift; sourceTree = "<group>"; };
+		FA5844B41C90B2040098DD98 /* LoginRootController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginRootController.swift; path = controller/login/LoginRootController.swift; sourceTree = "<group>"; };
 		FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhoneConfirmationController.swift; path = controller/login/PhoneConfirmationController.swift; sourceTree = "<group>"; };
 		FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RemoteJsonAPI.swift; path = api/RemoteJsonAPI.swift; sourceTree = "<group>"; };
 		FA9D68481C75AA8100C415B0 /* touch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = touch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -305,6 +307,7 @@
 				FA3F5B341C855AC700B7180A /* PhoneVerificationController.swift */,
 				FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */,
 				FA5844AE1C9065890098DD98 /* ProfilePictureController.swift */,
+				FA5844B41C90B2040098DD98 /* LoginRootController.swift */,
 			);
 			name = login;
 			sourceTree = "<group>";
@@ -595,6 +598,7 @@
 			files = (
 				FA3F5B311C855A9F00B7180A /* AppDelegate.swift in Sources */,
 				FA3F5B371C855AC700B7180A /* PhoneVerificationController.swift in Sources */,
+				FA5844B51C90B2040098DD98 /* LoginRootController.swift in Sources */,
 				FA2E03801C837E610016E14A /* LoginModel.swift in Sources */,
 				FA3F5B701C855BD500B7180A /* CountryPickerViewCell.swift in Sources */,
 				FA5844AF1C9065890098DD98 /* ProfilePictureController.swift in Sources */,

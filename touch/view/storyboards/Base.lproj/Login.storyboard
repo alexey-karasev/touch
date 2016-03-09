@@ -51,7 +51,7 @@
         <!--Root-->
         <scene sceneID="KZu-0T-yHz">
             <objects>
-                <viewController title="Root" id="d1K-1u-kE9" sceneMemberID="viewController">
+                <viewController title="Root" id="d1K-1u-kE9" customClass="LoginRootController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hDX-Vm-AUe"/>
                         <viewControllerLayoutGuide type="bottom" id="IuG-52-DA6"/>
@@ -71,7 +71,7 @@
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up with email" image="Email"/>
                                 <connections>
-                                    <segue destination="dHp-9F-7CA" kind="show" id="ylU-PL-uCU"/>
+                                    <segue destination="dHp-9F-7CA" kind="show" identifier="signUp" id="ylU-PL-uCU"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEd-ok-Dv8">
@@ -84,9 +84,6 @@
                                 <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up using Google" image="Google+"/>
-                                <connections>
-                                    <segue destination="FpU-WQ-CnE" kind="show" id="Hg8-Fd-gs0"/>
-                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDk-hu-3dg">
                                 <rect key="frame" x="10" y="487" width="355" height="50"/>
@@ -98,6 +95,9 @@
                                 <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
                                 <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Sign up using Facebook" image="Facebook"/>
+                                <connections>
+                                    <action selector="facebookButtonClicked:" destination="d1K-1u-kE9" eventType="touchUpInside" id="YPL-oF-G1G"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="do more" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yeB-31-JdK">
                                 <rect key="frame" x="156" y="225" width="63" height="25"/>
@@ -1057,7 +1057,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ylU-PL-uCU"/>
-        <segue reference="Hg8-Fd-gs0"/>
         <segue reference="BJ8-p9-7Pn"/>
     </inferredMetricsTieBreakers>
 </document>

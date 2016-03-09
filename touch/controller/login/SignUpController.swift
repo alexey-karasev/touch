@@ -11,15 +11,19 @@ import UIKit
 class SignUpController: UIViewController {
     
     
-    
+    var email: String?
+    var name: String?
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var loginField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var nameField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let email = self.email {emailField.text = email}
+        if let name = self.name {nameField.text = name}
         guard let user = AppUser.shared else {return}
         if let confirmed = user.confirmed where confirmed == true { return }
         performSegueWithIdentifier("phoneVerification", sender: self)
