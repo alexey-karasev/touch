@@ -9,6 +9,7 @@ target 'touch' do
     pod 'JWTDecode', '~> 1.0'
     pod 'FBSDKCoreKit'
     pod 'FBSDKLoginKit'
+    pod 'Google/SignIn'
 end
 
 target 'touchTests' do

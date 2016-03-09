@@ -42,6 +42,9 @@
 		FA8DF7241C8B78C90048DE4D /* PhoneConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7231C8B78C90048DE4D /* PhoneConfirmationController.swift */; settings = {ASSET_TAGS = (); }; };
 		FA8DF7261C8C8E950048DE4D /* RemoteJsonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8DF7251C8C8E950048DE4D /* RemoteJsonAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		FAA0753E1C75B8CF004BA66C /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = FAA0753D1C75B8CF004BA66C /* .gitignore */; settings = {ASSET_TAGS = (); }; };
+		FAA082491C90C96000B2B098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA082481C90C96000B2B098 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
+		FAA0824A1C90C96000B2B098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA082481C90C96000B2B098 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
+		FAA0824B1C90C96000B2B098 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FAA082481C90C96000B2B098 /* GoogleService-Info.plist */; settings = {ASSET_TAGS = (); }; };
 		FAFE898F1C7A5AD200B3F1AC /* AppUserSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -113,6 +116,8 @@
 		FA9D686A1C75AA8100C415B0 /* touchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = touchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9D68701C75AA8100C415B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FAA0753D1C75B8CF004BA66C /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		FAA082481C90C96000B2B098 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FAA0824D1C90CC8A00B2B098 /* touch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "touch-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAFE898E1C7A5AD200B3F1AC /* AppUserSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppUserSpec.swift; path = models/AppUserSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -272,6 +277,8 @@
 			children = (
 				FA3F5B781C855CBF00B7180A /* Info.plist */,
 				FA3F5B2F1C855A9F00B7180A /* AppDelegate.swift */,
+				FAA082481C90C96000B2B098 /* GoogleService-Info.plist */,
+				FAA0824D1C90CC8A00B2B098 /* touch-Bridging-Header.h */,
 			);
 			name = app;
 			sourceTree = "<group>";
@@ -467,6 +474,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA082491C90C96000B2B098 /* GoogleService-Info.plist in Resources */,
 				FA3F5B1D1C855A3B00B7180A /* Localizable.strings in Resources */,
 				FA3F5B281C855A6400B7180A /* Poppins-SemiBold.ttf in Resources */,
 				FA3F5B241C855A6400B7180A /* Poppins-Bold.ttf in Resources */,
@@ -486,6 +494,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA0824A1C90C96000B2B098 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +502,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAA0824B1C90C96000B2B098 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -791,11 +801,14 @@
 			baseConfigurationReference = 150DAE23696790EC0CF90F8A /* Pods-touch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = touch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touch/touch-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WEB_API_URL = "http://localhost:3000";
 			};
 			name = Debug;
@@ -805,11 +818,13 @@
 			baseConfigurationReference = B2CDC3835861066F942CE484 /* Pods-touch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = touch/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touch/touch-Bridging-Header.h";
 				WEB_API_URL = TBA;
 			};
 			name = Release;
@@ -824,6 +839,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touch/touchTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/touch.app/touch";
 			};
@@ -839,6 +855,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.alexeykarasev.touchTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "touch/touchTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/touch.app/touch";
 			};
 			name = Release;
