@@ -874,7 +874,7 @@
         <!--ProfilePicture-->
         <scene sceneID="4Ba-xt-aMO">
             <objects>
-                <viewController title="ProfilePicture" id="FpU-WQ-CnE" customClass="PhoneVerificationController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ProfilePicture" id="FpU-WQ-CnE" customClass="ProfilePictureController" customModule="touch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="bIt-Mh-ase"/>
                         <viewControllerLayoutGuide type="bottom" id="pHd-lA-9E4"/>
@@ -911,10 +911,14 @@
                                 <color key="textColor" red="0.50196078431372548" green="0.53333333333333333" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Profile" translatesAutoresizingMaskIntoConstraints="NO" id="KbU-Rn-YPH" userLabel="ProfilePicture">
-                                <rect key="frame" x="133" y="252" width="108" height="108"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oBu-wR-DfV" userLabel="Profile">
+                                <rect key="frame" x="134" y="252" width="108" height="108"/>
                                 <animations/>
-                            </imageView>
+                                <state key="normal" image="Profile"/>
+                                <connections>
+                                    <action selector="selectProfileClicked:" destination="FpU-WQ-CnE" eventType="touchUpInside" id="kxw-FF-V2u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -922,16 +926,19 @@
                             <constraint firstItem="GVY-v1-YGm" firstAttribute="centerX" secondItem="sm7-bB-HYD" secondAttribute="centerX" id="0EI-zL-YTp"/>
                             <constraint firstItem="jay-rE-If8" firstAttribute="centerX" secondItem="sm7-bB-HYD" secondAttribute="centerX" id="4Ir-WD-gb4"/>
                             <constraint firstItem="jay-rE-If8" firstAttribute="top" secondItem="bIt-Mh-ase" secondAttribute="bottom" constant="145" id="Egf-ky-5cE"/>
+                            <constraint firstItem="oBu-wR-DfV" firstAttribute="centerX" secondItem="sm7-bB-HYD" secondAttribute="centerX" id="GbI-32-fyR"/>
                             <constraint firstAttribute="trailing" secondItem="Rah-EK-nT8" secondAttribute="trailing" constant="10" id="MCM-kP-60p"/>
-                            <constraint firstItem="KbU-Rn-YPH" firstAttribute="centerX" secondItem="sm7-bB-HYD" secondAttribute="centerX" id="cAs-S1-AIQ"/>
                             <constraint firstItem="Rah-EK-nT8" firstAttribute="leading" secondItem="sm7-bB-HYD" secondAttribute="leading" constant="10" id="es0-1c-dBI"/>
                             <constraint firstItem="pHd-lA-9E4" firstAttribute="top" secondItem="Rah-EK-nT8" secondAttribute="bottom" constant="10" id="lhp-qF-MCl"/>
                             <constraint firstItem="GVY-v1-YGm" firstAttribute="top" secondItem="jay-rE-If8" secondAttribute="bottom" id="sD7-I9-oHI"/>
-                            <constraint firstItem="KbU-Rn-YPH" firstAttribute="top" secondItem="GVY-v1-YGm" secondAttribute="bottom" constant="34" id="xUo-42-HOg"/>
+                            <constraint firstItem="oBu-wR-DfV" firstAttribute="top" secondItem="GVY-v1-YGm" secondAttribute="bottom" constant="34" id="uOL-iE-e0n"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="selectProfileButton" destination="oBu-wR-DfV" id="CvL-pY-ra2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kyQ-et-jfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1046,7 +1053,7 @@
         <image name="Underline" width="601" height="89"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="ylU-PL-uCU"/>
         <segue reference="BJ8-p9-7Pn"/>
-        <segue reference="0Rq-Yh-pN5"/>
     </inferredMetricsTieBreakers>
 </document>

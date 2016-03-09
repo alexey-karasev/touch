@@ -20,11 +20,21 @@ class AppUser {
         shared = try AppUser(token: token)
     }
     static let lockboxKey="user:token"
+
     let token:String
     let email:String?
     let login:String?
     let phone:String?
     let confirmed: Bool?
+    var avatar: UIImage {
+        get {
+            return Avatar.shared.image
+        }
+        set {
+            Avatar.shared.image = newValue
+        }
+        
+    }
     
     init(token:String, email:String?, login:String?, phone:String?, confirmed:Bool?) {
         self.token = token
