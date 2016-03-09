@@ -18,6 +18,7 @@ class LoginModel {
         case EmptyField(String)
         case NotUniqueField(String)
         case Unauthorized
+        case InvalidPassword
         case APIError(API.Error)
         case Internal(String)
     }
@@ -96,24 +97,43 @@ class LoginModel {
                     throw Error.Unauthorized
                 })
             case .InternalServer(let json):
-                guard let id = json["id"] as? String else {
+                guard let error = json["error"] as? [String:AnyObject] else {
+                    return callback(result: {
+                        throw Error.Internal("Invalid json in error reponse")
+                    })
+                }
+                guard let id = error["id"] as? String else {
                     return callback(result: {
                         throw Error.Internal("Invalid error id")
                     })
                 }
-                guard let payload = json["payload"] as? String else {
+                guard let payload = error["payload"] as? [String:AnyObject] else {
                     return callback(result: {
                         throw Error.Internal("Invalid error payload")
                     })
                 }
                 switch id {
                 case "EMPTY_FIELD":
+                    guard let field = payload["field"] as? String else {
+                        return callback(result: {
+                            throw Error.Internal("Unexpected field in error payload")
+                        })
+                    }
                     return callback(result: {
-                        throw Error.EmptyField(payload)
+                        throw Error.EmptyField(field)
                     })
                 case "NOT_UNIQUE_FIELD":
+                    guard let field = payload["field"] as? String else {
+                        return callback(result: {
+                            throw Error.Internal("Unexpected field in error payload")
+                        })
+                    }
                     return callback(result: {
-                        throw Error.NotUniqueField(payload)
+                        throw Error.NotUniqueField(field)
+                    })
+                case "INVALID_PASSWORD":
+                    return callback(result: {
+                        throw Error.InvalidPassword
                     })
                 default:
                     return callback(result: {

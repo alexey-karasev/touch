@@ -20,9 +20,10 @@ class SignUpController: UIViewController {
     @IBOutlet weak var nameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if AppUser.shared != nil {
-            performSegueWithIdentifier("phoneVerification", sender: self)
-        }
+        guard let user = AppUser.shared else {return}
+        if let confirmed = user.confirmed where confirmed == true { return }
+        performSegueWithIdentifier("phoneVerification", sender: self)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,6 +57,9 @@ class SignUpController: UIViewController {
                     return
                 case .Internal(let data):
                     Utils.Text.log("Error: Sign Up Controller: Login Model: Internal Error, payload: \(data)")
+                default:
+                    Utils.Text.log("Error: Sign Up Controller: Unexpected error: \(error)")
+                    return Utils.Text.alertError("UNKNOWN_ERROR")
                 }
             } catch {
                 Utils.Text.log("Error: Sign Up Controller: Unexpected error: \(error)")

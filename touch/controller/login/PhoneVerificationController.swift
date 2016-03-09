@@ -25,17 +25,21 @@ class PhoneVerificationController: UIViewController, CountryPickerDelegate {
             } catch let error as LoginModel.Error {
                 switch error {
                 case .EmptyField(let field):
-                    return Utils.Text.alertError("\(field.uppercaseString)_IS_EMPTY")
+                    Utils.Text.alertError("\(field.uppercaseString)_IS_EMPTY")
                 case .NotUniqueField(let field):
-                    return Utils.Text.alertError("\(field.uppercaseString)_IS_NOT_UNIQUE")
+                    Utils.Text.alertError("\(field.uppercaseString)_IS_NOT_UNIQUE")
                 case .Unauthorized:
-                    Utils.Text.log("Error: Phone Verification Controller: On sign up server returned unauthorized")
-                    return Utils.Text.alertError("UNKNOWN_SERVER_ERROR")
+                    Utils.Text.alertError("SESSION_EXPIRED")
+                    self?.navigationController?.popViewControllerAnimated(true)
                 case .APIError:
                     return
                 case .Internal(let data):
                     Utils.Text.log("Error: Phone Verification Controller: Login Model: Internal Error, payload: \(data)")
+                default:
+                    Utils.Text.log("Error: Phone Verification Controller: Unexpected error: \(error)")
+                    return Utils.Text.alertError("UNKNOWN_ERROR")
                 }
+                return
             } catch {
                 Utils.Text.log("Error: Phone Verification Controller: Unexpected error: \(error)")
                 return Utils.Text.alertError("UNKNOWN_ERROR")

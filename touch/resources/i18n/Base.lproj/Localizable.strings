@@ -40,3 +40,5 @@
 "LOGIN_IS_EMPTY" = "The login field is empty";
 "PASSWORD_IS_EMPTY" = "The password field is empty";
 "NAME_IS_EMPTY" = "The name field is empty";
+"SESSION_EXPIRED" = "Your session expired please try again";
+"INVALID_CONFIRMATION_CODE" = "Invalid confirmation code";

@@ -90,14 +90,24 @@ class WebAPI:RemoteJsonAPI {
             }
             
             let httpResp = response as! NSHTTPURLResponse
-            if (httpResp.statusCode != 200) {
-                return callback(result: {
+            switch httpResp.statusCode {
+            case 200:
+                callback(result: {
+                    return json!
+                })
+            case 401:
+                callback(result: {
+                    throw Error.Unauthorized
+                })
+            case 500:
+                callback(result: {
                     throw Error.InternalServer(json!)
                 })
+            default:
+                callback(result: {
+                    throw Error.Internal("Unexpected Server Response Code")
+                })
             }
-            callback(result: {
-                return json!
-            })
         }
         task.resume()
     }
