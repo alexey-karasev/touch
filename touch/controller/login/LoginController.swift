@@ -9,7 +9,8 @@
 import UIKit
 
 class LoginController: UIViewController {
-    @IBOutlet weak var emailField: UITextField!
+
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var next: UIButton!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var back: UIButton!
@@ -18,49 +19,52 @@ class LoginController: UIViewController {
         navigationController?.popViewControllerAnimated(true)
     }
     @IBAction func nextClicked() {
-//        let email = emailField.text
-//        let password = passwordField.text
-//        if !validateEmail(email!) {
-//            Utils.shared.alert(header: "ERROR", message: "INVALID_EMAIL")
-//            return
-//        }
-//        if (password == nil) || password!.characters.count == 0 {
-//            Utils.shared.alert(header: "ERROR", message: "PASSWORD_FIELD_REQUIRED")
-//            return
-//        }
-//        let payload: Json? = ["username":email!, "password":password!]
-//        Utils.shared.addOverlayToView(self.view, withHUD:true, blockActivity:true)
-//        WebApi.shared.post(url: "/users/login", payload:payload) { data, error, errorPayload in
-//            Utils.shared.dismissOverlay()
-//            if error != nil {
-//                switch error!.domain {
-//                case NSURLErrorDomain:
-//                    switch NSURLError(rawValue: error!.code)! {
-//                    case NSURLError.TimedOut:
-//                        Utils.shared.alert(header: "ERROR", message: "REQUEST_TO_SERVER_TIMED_OUT")
-//                    case NSURLError.CannotConnectToHost:
-//                        Utils.shared.alert(header: "ERROR", message: "CANNOT_NOT_CONNECT_TO_SERVER")
-//                    case NSURLError.NotConnectedToInternet:
-//                        Utils.shared.alert(header: "ERROR", message: "IPHONE_NOT_CONNECTED_TO_INTERNET")
-//                    case NSURLError.UserCancelledAuthentication:
-//                        Utils.shared.alert(header: "ERROR", message: "INVALID_USERNAME_OR_PASSWORD")
-//                    default: break
-//                    }
-//                default:
-//                    Utils.shared.alert(header: "ERROR", message: "UNKNOWN_CONNECTION_ERROR")
-//                }
-//            }
-//            print("\(data), \(error)")
-//        }
+        let username = usernameField.text!
+        let password = passwordField.text!
+        if username.characters.count == 0 {
+            Utils.Text.alertError("USERNAME_FIELD_REQUIRED")
+            return
+        }
+        if password.characters.count == 0 {
+            Utils.Text.alertError("PASSWORD_FIELD_REQUIRED")
+            return
+        }
+        LoginModel.shared.login(username, password: password) {[weak self] result in
+            var token: String?
+            do {
+                token = try result()
+            } catch let error as LoginModel.Error {
+                switch error {
+                case .Unauthorized:
+                    return Utils.Text.alertError("INVALID_USERNAME_OR_PASSWORD")
+                case .APIError:
+                    return
+                case .Internal(let data):
+                    Utils.Text.log("Error: Login Controller: Login Model: Internal Error, payload: \(data)")
+                    return Utils.Text.alertError("UNKNOWN_ERROR")
+                default:
+                    Utils.Text.log("Error: Login Controller: Unexpected error: \(error)")
+                    return Utils.Text.alertError("UNKNOWN_ERROR")
+                }
+            } catch {
+                Utils.Text.log("Error: Login Controller: Unexpected error: \(error)")
+                return Utils.Text.alertError("UNKNOWN_ERROR")
+            }
+            
+            do {
+                try AppUser.update(token!)
+            }
+            catch {
+                Utils.Text.alertError("INVALID_TOKEN")
+                Utils.Text.log("Error: Login Controller: Invalid token")
+                return
+            }
+            self?.performSegueWithIdentifier("toMain", sender: self!)
+        }
+        
     }
     override func viewDidLoad() {
-
         super.viewDidLoad()
-        emailField.becomeFirstResponder()
-    }
-    
-    private func validateEmail(candidate: String) -> Bool {
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}"
-        return NSPredicate(format: "SELF MATCHES %@", emailRegex).evaluateWithObject(candidate)
+        usernameField.becomeFirstResponder()
     }
 }

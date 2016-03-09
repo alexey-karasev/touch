@@ -56,7 +56,8 @@ class SignUpController: UIViewController {
                 case .APIError:
                     return
                 case .Internal(let data):
-                    Utils.Text.log("Error: Sign Up Controller: Login Model: Internal Error, payload: \(data)")
+                    Utils.Text.alertError("UNKNOWN_ERROR")
+                    return Utils.Text.log("Error: Sign Up Controller: Login Model: Internal Error, payload: \(data)")
                 default:
                     Utils.Text.log("Error: Sign Up Controller: Unexpected error: \(error)")
                     return Utils.Text.alertError("UNKNOWN_ERROR")
@@ -72,6 +73,7 @@ class SignUpController: UIViewController {
             catch {
                 Utils.Text.alertError("INVALID_TOKEN")
                 Utils.Text.log("Error: Sign Up Controller: Invalid token")
+                return
             }
             self?.performSegueWithIdentifier("phoneVerification", sender: self!)
         }

@@ -405,7 +405,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Email, Username or Phonenumber" textAlignment="natural" minimumFontSize="17" background="Underline" translatesAutoresizingMaskIntoConstraints="NO" id="crR-yO-0cO">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" placeholder="Email, Username or Phonenumber" textAlignment="natural" minimumFontSize="17" background="Underline" translatesAutoresizingMaskIntoConstraints="NO" id="crR-yO-0cO" userLabel="Username Field">
                                 <rect key="frame" x="37" y="220" width="300" height="44"/>
                                 <animations/>
                                 <constraints>
@@ -479,10 +479,10 @@
                     <size key="freeformSize" width="375" height="667"/>
                     <connections>
                         <outlet property="back" destination="1UV-ZD-mqF" id="tDh-OZ-4ij"/>
-                        <outlet property="emailField" destination="crR-yO-0cO" id="faD-E9-Bse"/>
                         <outlet property="next" destination="guJ-Az-qPy" id="2ES-0q-eF3"/>
                         <outlet property="passwordField" destination="O4S-WG-agu" id="xst-4Z-6R6"/>
-                        <segue destination="eT5-Uc-X5T" kind="custom" id="BJ8-p9-7Pn"/>
+                        <outlet property="usernameField" destination="crR-yO-0cO" id="bad-Ih-nRy"/>
+                        <segue destination="eT5-Uc-X5T" kind="showDetail" identifier="toMain" id="BJ8-p9-7Pn"/>
                         <segue destination="dHp-9F-7CA" kind="show" identifier="signup" id="0Rq-Yh-pN5"/>
                     </connections>
                 </viewController>
@@ -961,6 +961,9 @@
                                 <state key="normal" title="Not now">
                                     <color key="titleColor" red="0.25490196078431371" green="0.28627450980392155" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="eT5-Uc-X5T" kind="showDetail" identifier="toMain" id="5KP-Ow-bzL"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nVE-n3-nLS">
                                 <rect key="frame" x="10" y="547" width="355" height="50"/>
@@ -1018,7 +1021,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFX-Gs-Xfo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3473.5" y="1179.5"/>
+            <point key="canvasLocation" x="3526.5" y="1179.5"/>
         </scene>
         <!--Main Storyboard-->
         <scene sceneID="AN4-Ip-eQO">
@@ -1043,6 +1046,7 @@
         <image name="Underline" width="601" height="89"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ylU-PL-uCU"/>
+        <segue reference="BJ8-p9-7Pn"/>
+        <segue reference="0Rq-Yh-pN5"/>
     </inferredMetricsTieBreakers>
 </document>

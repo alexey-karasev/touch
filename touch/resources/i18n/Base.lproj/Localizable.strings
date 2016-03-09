@@ -11,7 +11,7 @@
 "PHONE_FIELD_REQUIRED" = "Phone field is required";
 "VERIFICATION_FIELD_REQUIRED" = "Verification field is required";
 "UNKNOWN_CONNECTION_ERROR" = "Unknown connection error";
-"INVALID_USERNAME_OR_PASSWORD" = "Invalid username or password";
+
 "USER_NOT_CONFIRMED" = "The user with specified credentials is not confirmed";
 
 "US" = "UNITED STATES";
@@ -22,7 +22,6 @@
 "UNKNOWN_SERVER_ERROR" = "Unknown server error";
 "UNKNOWN_ERROR" = "Unknown error";
 "INVALID_TOKEN" = "The server issued invalid token";
-"INVALID_CONFIRMATION_CODE" = "Invalid confirmation code";
 
 //WebApi Error
 "CANNOT_NOT_CONNECT_TO_SERVER" = "Could not connect to server";
@@ -38,7 +37,9 @@
 "EMAIL_IS_EMPTY" = "The email field is empty";
 "PHONE_IS_EMPTY" = "The phone field is empty";
 "LOGIN_IS_EMPTY" = "The login field is empty";
+"USERNAME_IS_EMPTY" = "The username field is empty";
 "PASSWORD_IS_EMPTY" = "The password field is empty";
 "NAME_IS_EMPTY" = "The name field is empty";
 "SESSION_EXPIRED" = "Your session expired please try again";
 "INVALID_CONFIRMATION_CODE" = "Invalid confirmation code";
+"INVALID_USERNAME_OR_PASSWORD" = "Invalid username or password";

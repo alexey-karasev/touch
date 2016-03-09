@@ -39,6 +39,7 @@ class PhoneConfirmationController: UIViewController {
                     return
                 case .Internal(let data):
                     Utils.Text.log("Error: Phone Verification Controller: Login Model: Internal Error, payload: \(data)")
+                    return Utils.Text.alertError("UNKNOWN_ERROR")
                 }
                 return
             } catch {
@@ -52,6 +53,7 @@ class PhoneConfirmationController: UIViewController {
             catch {
                 Utils.Text.alertError("INVALID_TOKEN")
                 Utils.Text.log("Error: Phone Verification Controller: Invalid token")
+                return
             }
             self?.performSegueWithIdentifier("connectContacts", sender: self!)
 
