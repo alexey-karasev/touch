@@ -4,7 +4,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Poppins-Light.ttf">
@@ -74,17 +73,6 @@
                                     <segue destination="dHp-9F-7CA" kind="show" identifier="signUp" id="ylU-PL-uCU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xEd-ok-Dv8">
-                                <rect key="frame" x="10" y="547" width="355" height="50"/>
-                                <animations/>
-                                <color key="backgroundColor" red="0.16862745098039217" green="0.78823529411764703" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="tei-9K-SgQ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
-                                <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Sign up using Google" image="Google+"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDk-hu-3dg">
                                 <rect key="frame" x="10" y="487" width="355" height="50"/>
                                 <animations/>
@@ -131,54 +119,61 @@
                                 <rect key="frame" x="144" y="165" width="86" height="41"/>
                                 <animations/>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4D7-Qo-Etq" userLabel="Sign up using Google" customClass="GIDSignInButton">
+                                <rect key="frame" x="10" y="547" width="355" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hCZ-Sf-K43" userLabel="Google Button">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                        <animations/>
+                                        <color key="backgroundColor" red="0.16862745100000001" green="0.78823529410000004" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="w0q-bK-DXc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Sign up using Google" image="Google+"/>
+                                    </button>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="hCZ-Sf-K43" secondAttribute="trailing" id="TTn-K2-0mV"/>
+                                    <constraint firstItem="hCZ-Sf-K43" firstAttribute="leading" secondItem="4D7-Qo-Etq" secondAttribute="leading" id="Whw-hA-gSS"/>
+                                    <constraint firstItem="hCZ-Sf-K43" firstAttribute="top" secondItem="4D7-Qo-Etq" secondAttribute="top" id="a6Y-Yu-ull"/>
+                                    <constraint firstAttribute="height" constant="50" id="lHX-cC-c6p"/>
+                                    <constraint firstAttribute="bottom" secondItem="hCZ-Sf-K43" secondAttribute="bottom" id="t9g-Ip-YKj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="xEd-ok-Dv8" secondAttribute="bottom" constant="10" id="1qr-oG-KR4"/>
                             <constraint firstItem="eiC-RB-Avt" firstAttribute="trailing" secondItem="zDk-hu-3dg" secondAttribute="trailing" id="2LU-2D-sZx"/>
-                            <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="xEd-ok-Dv8" secondAttribute="bottom" constant="10" id="2ST-qg-GhP"/>
                             <constraint firstAttribute="trailing" secondItem="KrL-Yq-Edg" secondAttribute="trailing" constant="10" id="3KN-6b-rQ0"/>
                             <constraint firstItem="IuG-52-DA6" firstAttribute="top" secondItem="KrL-Yq-Edg" secondAttribute="bottom" constant="10" id="4av-bX-hbo"/>
                             <constraint firstItem="KrL-Yq-Edg" firstAttribute="leading" secondItem="Pct-fp-rDa" secondAttribute="leading" constant="10" id="8Al-0X-cIT"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="xEd-ok-Dv8" secondAttribute="trailing" constant="-10" id="Bfa-uG-jOL"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="531" id="MQy-im-W4M"/>
                             <constraint firstItem="unx-R5-LLo" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="145" id="NkW-AN-1Ha"/>
                             <constraint firstItem="eiC-RB-Avt" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="8" symbolic="YES" id="PK6-NM-TV0"/>
-                            <constraint firstItem="zDk-hu-3dg" firstAttribute="leading" secondItem="xEd-ok-Dv8" secondAttribute="leading" id="SBO-Nx-5d1"/>
-                            <constraint firstItem="zDk-hu-3dg" firstAttribute="trailing" secondItem="xEd-ok-Dv8" secondAttribute="trailing" id="Sfk-lw-mbu"/>
+                            <constraint firstItem="4D7-Qo-Etq" firstAttribute="leading" secondItem="zDk-hu-3dg" secondAttribute="leading" id="Pb8-mA-klZ"/>
                             <constraint firstItem="zDk-hu-3dg" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="8" symbolic="YES" id="TB9-Od-D6U"/>
                             <constraint firstItem="yeB-31-JdK" firstAttribute="centerX" secondItem="unx-R5-LLo" secondAttribute="centerX" id="TyQ-f3-1uO"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="trailing" secondItem="KrL-Yq-Edg" secondAttribute="trailing" id="Xh8-5J-pzn"/>
+                            <constraint firstItem="4D7-Qo-Etq" firstAttribute="top" secondItem="zDk-hu-3dg" secondAttribute="bottom" constant="10" id="YTZ-5k-Cek"/>
                             <constraint firstItem="yeB-31-JdK" firstAttribute="top" secondItem="unx-R5-LLo" secondAttribute="bottom" constant="19" id="ZGv-ua-nnU"/>
                             <constraint firstItem="zDk-hu-3dg" firstAttribute="leading" secondItem="KrL-Yq-Edg" secondAttribute="leading" id="agE-Sv-aad"/>
+                            <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="4D7-Qo-Etq" secondAttribute="bottom" constant="10" id="azs-kV-tNc"/>
                             <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="538" id="bVr-S2-sYE"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="top" secondItem="zDk-hu-3dg" secondAttribute="bottom" constant="10" id="dyc-50-ZVF"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="leading" secondItem="KrL-Yq-Edg" secondAttribute="leading" id="he7-Mo-Amr"/>
-                            <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="xEd-ok-Dv8" secondAttribute="bottom" constant="10" id="hkT-d4-c8r"/>
                             <constraint firstItem="yeB-31-JdK" firstAttribute="centerX" secondItem="Pct-fp-rDa" secondAttribute="centerX" id="iOQ-NP-qjX"/>
                             <constraint firstItem="IuG-52-DA6" firstAttribute="top" secondItem="KrL-Yq-Edg" secondAttribute="bottom" constant="53" id="im9-bk-IqR"/>
                             <constraint firstItem="unx-R5-LLo" firstAttribute="centerX" secondItem="Pct-fp-rDa" secondAttribute="centerX" id="kZf-Fb-HU7"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="trailing" secondItem="KrL-Yq-Edg" secondAttribute="trailing" id="l0A-Y4-ZQR"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="top" secondItem="zDk-hu-3dg" secondAttribute="bottom" constant="10" id="mvK-hT-VVL"/>
                             <constraint firstItem="KrL-Yq-Edg" firstAttribute="top" secondItem="hDX-Vm-AUe" secondAttribute="bottom" constant="493" id="s75-Or-9RW"/>
+                            <constraint firstItem="4D7-Qo-Etq" firstAttribute="trailing" secondItem="zDk-hu-3dg" secondAttribute="trailing" id="tcx-Wm-X1H"/>
                             <constraint firstItem="zDk-hu-3dg" firstAttribute="trailing" secondItem="KrL-Yq-Edg" secondAttribute="trailing" id="thu-wl-gZa"/>
-                            <constraint firstItem="xEd-ok-Dv8" firstAttribute="leading" secondItem="KrL-Yq-Edg" secondAttribute="leading" id="zmw-TL-iId"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="TyQ-f3-1uO"/>
-                                <exclude reference="SBO-Nx-5d1"/>
-                                <exclude reference="Sfk-lw-mbu"/>
                                 <exclude reference="TB9-Od-D6U"/>
-                                <exclude reference="Bfa-uG-jOL"/>
-                                <exclude reference="MQy-im-W4M"/>
-                                <exclude reference="l0A-Y4-ZQR"/>
-                                <exclude reference="mvK-hT-VVL"/>
-                                <exclude reference="zmw-TL-iId"/>
-                                <exclude reference="2ST-qg-GhP"/>
                                 <exclude reference="bVr-S2-sYE"/>
-                                <exclude reference="hkT-d4-c8r"/>
                                 <exclude reference="s75-Or-9RW"/>
                                 <exclude reference="im9-bk-IqR"/>
                             </mask>
@@ -187,6 +182,10 @@
                     <navigationItem key="navigationItem" id="Ev4-q8-aBk"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="667"/>
+                    <connections>
+                        <outlet property="googleSignInButton" destination="hCZ-Sf-K43" id="m86-KM-jHW"/>
+                        <outlet property="googleSignInView" destination="4D7-Qo-Etq" id="v8P-ij-mBe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jc5-xA-zey" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -10,10 +10,20 @@ import UIKit
 import FBSDKLoginKit
 import FBSDKCoreKit
 
-class LoginRootController: UIViewController {
+class LoginRootController: UIViewController, GIDSignInUIDelegate {
     
     var email: String?
     var name: String?
+    
+    @IBOutlet weak var googleSignInView: GIDSignInButton!
+    
+    @IBOutlet weak var googleSignInButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        GIDSignIn.sharedInstance().uiDelegate = self
+        googleSignInView.bringSubviewToFront(googleSignInButton)
+    }
     
     @IBAction func facebookButtonClicked(sender: AnyObject) {
         let login = FBSDKLoginManager()
