@@ -42,6 +42,7 @@ class AppUser {
         self.login = login
         self.phone = phone
         self.confirmed = confirmed
+        Avatar.shared.clear()
     }
     
     convenience init() throws {

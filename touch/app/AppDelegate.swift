@@ -40,9 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if (error == nil) {
 //                let userId = user.userID                  // For client-side use only!
 //                let idToken = user.authentication.idToken // Safe to send to the server
-//                let name = user.profile.name
-//                let email = user.profile.email
-//                let a = 1
+                let nav = window!.rootViewController as? UINavigationController
+                let loginController = nav?.visibleViewController as? LoginRootController
+                loginController?.email = user.profile.email
+                loginController?.name = user.profile.name
+                loginController?.performSegueWithIdentifier("signUp", sender: loginController!)
             } else {
                 print("\(error.localizedDescription)")
             }

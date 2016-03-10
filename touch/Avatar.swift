@@ -11,11 +11,11 @@ import UIKit
 class Avatar {
     static let shared = Avatar()
     static let defaultsKey="avatar"
-    static let targetSize = 108
+    static let targetSize = 91
     var image: UIImage {
         get {
             guard let data = NSUserDefaults.standardUserDefaults().objectForKey(Avatar.defaultsKey) as? NSData else {
-                return UIImage(named: "Profile")!
+                return scaleImage(UIImage(named: "Profile")!)
             }
             return UIImage(data: data)!
         }
@@ -23,6 +23,10 @@ class Avatar {
             let image = scaleImage(newValue)
             NSUserDefaults.standardUserDefaults().setObject(UIImagePNGRepresentation(image), forKey: Avatar.defaultsKey)
         }
+    }
+    
+    func clear() {
+        NSUserDefaults.standardUserDefaults().removeObjectForKey(Avatar.defaultsKey)
     }
     
     private func scaleImage(image: UIImage) -> UIImage {
