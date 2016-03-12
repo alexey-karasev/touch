@@ -8,11 +8,18 @@
 
 import UIKit
 
-class PhoneConfirmationController: UIViewController {
+class PhoneConfirmationController: UIViewController, UITextFieldDelegate {
+    
+    let codeFieldLength = 4
     
     @IBOutlet weak var codeField: UITextField!
     @IBAction func backClicked(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        codeField.delegate = self
     }
     
     @IBAction func nextClicked(sender: AnyObject) {
@@ -58,6 +65,18 @@ class PhoneConfirmationController: UIViewController {
             self?.performSegueWithIdentifier("connectContacts", sender: self!)
 
         }
+    }
+    
+    // Code text view delegate
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= codeFieldLength
     }
     
 }
